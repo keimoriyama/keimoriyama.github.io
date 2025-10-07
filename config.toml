@@ -8,7 +8,7 @@ pygmentsUseClasses = true
 # [markup]
 #   [markup.goldmark]
 [markup.goldmark.renderer]
-      unsafe = true
+  unsafe = true
       
 [params]
   author = "Kei Moriyama"

@@ -30,13 +30,13 @@
               <span class="Counter">{{ $section_count}}</span>
             </a>
             {{ range .Site.Params.self }}
-            <a class="UnderlineNav-item {{ if .IsSection }} selected {{ end }}{{ if eq .Type " tags" }} selected {{ end }}" href="{{ .url }}">
-              {{ .name}}
+            <a class="UnderlineNav-item {{ if .IsSection }} selected {{ end }}{{ if eq .Type " tags" }} selected {{ end }}" href="{{ absURL .url }}">
+                {{ .name}}
             </a>
             {{ end }}
 
             {{ range .Site.Params.projects }}
-            <a class="UnderlineNav-item {{ if .IsSection }} selected {{ end }}{{ if eq .Type " tags" }} selected {{ end }}" href="{{ .url }}">
+            <a class="UnderlineNav-item {{ if .IsSection }} selected {{ end }}{{ if eq .Type " tags" }} selected {{ end }}" href="{{ absURL .url }}">
               {{ .name}}
             </a>
             {{ end }}
