@@ -155,7 +155,7 @@
                 </path>
               </svg>
               Posts
-              <span class="Counter">3</span>
+              <span class="Counter">4</span>
             </a>
             
             <a class="UnderlineNav-item " href="http://localhost:1313/introduction/introduction">
@@ -449,7 +449,7 @@
         </path>
       </svg>
       Posts
-      <span class="Counter ">3</span>
+      <span class="Counter ">4</span>
     </a>
   </nav>
 </div>
@@ -494,6 +494,63 @@
           Popular posts
         </h2>
         <ol class="d-flex flex-wrap list-style-none gutter-condensed mb-4 js-pinned-items-reorder-list">
+          
+          <li class="col-12 col-md-6 col-lg-6 mb-3 d-flex flex-content-stretch">
+            <div
+              class="Box pinned-item-list-item d-flex p-3 width-full js-pinned-item-list-item public source reorderable sortable-button-item">
+              <div class="pinned-item-list-item-content">
+                <div class="d-flex width-full flex-items-center position-relative">
+                  <svg class="octicon octicon-repo mr-2 text-gray flex-shrink-0" viewBox="0 0 16 16" version="1.1"
+                    width="16" height="16">
+                    <path fill-rule="evenodd"
+                      d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z">
+                    </path>
+                  </svg>
+                  <a class="text-bold flex-auto min-width-0" href="http://localhost:1313/post/tech/20251007164516-hugo%E3%81%AEgithub_style%E3%81%AB%E7%8B%AC%E8%87%AA%E3%81%AE%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%92%E4%BB%98%E3%81%91%E3%82%8B/">
+                    <span class="repo" title="HugoのGithub Styleに自作のメニューを付ける">HugoのGithub Styleに自作のメニューを付ける</span>
+                  </a>
+                </div>
+
+
+                <div name="summary" class="pinned-item-desc text-gray text-small d-block mt-2 mb-3">
+                  <p>このブログは<a href="https://gohugo.io">Hugo</a>の<a href="https://themes.gohugo.io/themes/github-style/">Github Style</a>を少し設定している。</p>
+<p>デフォルトだと、自己紹介などがブログに埋もれてしまうためメニューバーに追加した。</p>
+<p>現状、一つ加える度にhtmlを触らないといけない実装になっているのが気になるが、動いているからヨシ!</p>
+<p><code>config.toml</code> に以下の要素を追加して、設定ファイルに追記すれば要素が追加されるようにした。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="p">[[</span><span class="nx">params</span><span class="p">.</span><span class="nx">self</span><span class="p">]]</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">name</span> <span class="p">=</span> <span class="s1">&#39;Self&#39;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">url</span><span class="p">=</span><span class="s2">&#34;introduction/introduction&#34;</span>
+</span></span></code></pre></div><p>そして、作成したHugoプロジェクト以下に <code>layouts/partial/menu.html</code> を作る。</p>
+<p><code>menus.html</code> の追加のメニューとして以下の変更を加えた。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">{{ range .Site.Params.projects }}
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;UnderlineNav-item
+</span></span></span><span class="line"><span class="cl"><span class="s">          {{ if .IsSection }}  selected  {{ end }}
+</span></span></span><span class="line"><span class="cl"><span class="s">          {{ if eq .Type &#34;</span> <span class="na">tags</span><span class="err">&#34;</span> <span class="err">}}</span> <span class="na">selected</span> <span class="err">{{</span> <span class="na">end</span> <span class="err">}}&#34;</span>
+</span></span><span class="line"><span class="cl">   <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ absURL .url }}&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  {{ .name}}
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">{{ end }}
+</span></span></code></pre></div><p>既存の実装では、リンクを貼る実装が <code>{{urls.JoinPath .Site.BaseURL url}}</code> になってる。</p>
+<p>だが、上手く動作してくれなかったので <code>{{absURL .url}}</code> という実装にしている。</p>
+                </div>
+
+                <p class="mb-0 f6 text-gray">
+                  
+                  
+                  <a href="/tags/tech" class="pinned-item-meta muted-link ">
+                    <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                      <path fill-rule="evenodd"
+                        d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                      </path>
+                    </svg>
+                    tech
+                  </a>
+                  
+                  
+                </p>
+              </div>
+            </div>
+          </li>
           
           <li class="col-12 col-md-6 col-lg-6 mb-3 d-flex flex-content-stretch">
             <div
@@ -616,6 +673,12 @@
 
     
     <div class="mt-4 position-relative" id="contributions" data='[
+{
+  "title": "Hugo%e3%81%aeGithub%20Style%e3%81%ab%e8%87%aa%e4%bd%9c%e3%81%ae%e3%83%a1%e3%83%8b%e3%83%a5%e3%83%bc%e3%82%92%e4%bb%98%e3%81%91%e3%82%8b",
+  "link": "http://localhost:1313/post/tech/20251007164516-hugo%E3%81%AEgithub_style%E3%81%AB%E7%8B%AC%E8%87%AA%E3%81%AE%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%92%E4%BB%98%E3%81%91%E3%82%8B/",
+  "publishDate": "2025-10-07%2000:00:00"
+},
+
 {
   "title": "%e3%83%81%e3%82%a7%e3%83%bc%e3%83%b3%e3%82%bd%e3%83%bc%e3%83%9e%e3%83%b3%20%e3%83%ac%e3%82%bc%e7%b7%a8",
   "link": "http://localhost:1313/post/movie/20251007082221-%E3%83%81%E3%82%A7%E3%83%BC%E3%83%B3%E3%82%BD%E3%83%BC%E3%83%9E%E3%83%B3_%E3%83%AC%E3%82%BC%E7%B7%A8/",
