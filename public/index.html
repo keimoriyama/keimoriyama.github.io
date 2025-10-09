@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="jp-JP">
 <head>
-	<meta name="generator" content="Hugo 0.150.1"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+	<meta name="generator" content="Hugo 0.151.0"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <script type="application/javascript" src='http://localhost:1313/js/theme-mode.js'></script>
@@ -155,7 +155,7 @@
                 </path>
               </svg>
               Posts
-              <span class="Counter">4</span>
+              <span class="Counter">5</span>
             </a>
             
             <a class="UnderlineNav-item " href="http://localhost:1313/introduction/introduction">
@@ -449,7 +449,7 @@
         </path>
       </svg>
       Posts
-      <span class="Counter ">4</span>
+      <span class="Counter ">5</span>
     </a>
   </nav>
 </div>
@@ -494,6 +494,66 @@
           Popular posts
         </h2>
         <ol class="d-flex flex-wrap list-style-none gutter-condensed mb-4 js-pinned-items-reorder-list">
+          
+          <li class="col-12 col-md-6 col-lg-6 mb-3 d-flex flex-content-stretch">
+            <div
+              class="Box pinned-item-list-item d-flex p-3 width-full js-pinned-item-list-item public source reorderable sortable-button-item">
+              <div class="pinned-item-list-item-content">
+                <div class="d-flex width-full flex-items-center position-relative">
+                  <svg class="octicon octicon-repo mr-2 text-gray flex-shrink-0" viewBox="0 0 16 16" version="1.1"
+                    width="16" height="16">
+                    <path fill-rule="evenodd"
+                      d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z">
+                    </path>
+                  </svg>
+                  <a class="text-bold flex-auto min-width-0" href="http://localhost:1313/post/tech/20251008094413-emacs%E3%81%A7lua_language_server%E3%82%92%E5%8B%95%E3%81%8B%E3%81%99/">
+                    <span class="repo" title="Emacsでlua-language-serverを動かす">Emacsでlua-language-serverを動かす</span>
+                  </a>
+                </div>
+
+
+                <div name="summary" class="pinned-item-desc text-gray text-small d-block mt-2 mb-3">
+                  <p>Emacsのlsp-modeでlua-language-serverを動かそうとしたら、ハマったのでメモ。</p>
+<p><a href="https://zenn.dev/mozumasu/articles/mozumasu-wezterm-customization">モテるターミナルにカスタマイズしよう（WezTerm）</a>を見て、weztermを設定しようとした。</p>
+<p>設定ファイルである <code>wezterm.lua</code> をEmacsで編集するためにluaの環境を整えようとしたら、Lua-language-serverを <code>lsp-mode</code> が認識しなかった。</p>
+<p>加えて、自動でインストールしようとしたら、emacsがフリーズしてしまった。</p>
+<p>動作させるために必要だった設定は以下の通り。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">lsp-clients-lua-language-server-bin</span> <span class="p">(</span><span class="nf">format</span> <span class="s">&#34;%s/.nix-profile/bin/lua-language-server&#34;</span> <span class="p">(</span><span class="nv">getenv</span> <span class="s">&#34;HOME&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">lsp-clients-lua-language-server-main-location</span> <span class="p">(</span><span class="nf">format</span> <span class="s">&#34;%s/.lua-language-server/main.lua&#34;</span> <span class="p">(</span><span class="nv">getenv</span> <span class="s">&#34;HOME&#34;</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl"><span class="c1">; reference : https://github.com/emacs-lsp/lsp-mode/issues/4688#issuecomment-3138937688</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">my/lsp-clients-lua-language-server-test</span> <span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="s">&#34;(Improved) Test Lua language server binaries and files.&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">or</span> <span class="p">(</span><span class="nb">and</span> <span class="p">(</span><span class="nv">f-exists?</span> <span class="nv">lsp-clients-lua-language-server-main-location</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">           <span class="p">(</span><span class="nv">f-exists?</span> <span class="nv">lsp-clients-lua-language-server-bin</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nv">f-exists?</span> <span class="p">(</span><span class="nf">car</span> <span class="p">(</span><span class="nv">split-string</span> <span class="nv">lsp-clients-lua-language-server-command</span><span class="p">)))))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">advice-add</span> <span class="nf">#&#39;</span><span class="nv">lsp-clients-lua-language-server-test</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">:override</span> <span class="nf">#&#39;</span><span class="nv">my/lsp-clients-lua-language-server-test</span><span class="p">)</span>
+</span></span></code></pre></div><p>lsp-mode自体にもIssueが上っていたためそれを参考にして設定したら動作した。</p>
+<p>私はnixを使用してlua-language-serverをインストールしている。
+インストールする時に、lua-language-serverの <code>main.lua</code> を適当な場所に配置する。</p>
+<p>この <code>main.lua</code> の場所を <code>lsp-clients-lua-language-server-main-location</code> に設定し、 <code>lsp-clients-lua-language-server-bin</code> にlua-language-serverをインストールしたPathを設定する。</p>
+<p>最後に、<a href="https://github.com/emacs-lsp/lsp-mode/issues/4688#issuecomment-3138937688">このIssueコメント</a>にある関数をコピペしたら動いた。</p>
+<p>参考 : <a href="https://github.com/emacs-lsp/lsp-mode/issues/4688">Externally provided lua-language-server is not recognized #4688</a></p>
+                </div>
+
+                <p class="mb-0 f6 text-gray">
+                  
+                  
+                  <a href="/tags/tech" class="pinned-item-meta muted-link ">
+                    <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                      <path fill-rule="evenodd"
+                        d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                      </path>
+                    </svg>
+                    tech
+                  </a>
+                  
+                  
+                </p>
+              </div>
+            </div>
+          </li>
           
           <li class="col-12 col-md-6 col-lg-6 mb-3 d-flex flex-content-stretch">
             <div
@@ -635,7 +695,9 @@
 </li>
 </ul>
 <h2 id="スライドで使うサイト">スライドで使うサイト</h2>
-<p><a href="https://www.irasutoya.com">いらすとや</a></p>
+<ul>
+<li><a href="https://www.irasutoya.com">いらすとや</a></li>
+</ul>
 <p>圧倒的便利さ。画像を眺めるだけで楽しい。</p>
                 </div>
 
@@ -691,6 +753,12 @@
 
     
     <div class="mt-4 position-relative" id="contributions" data='[
+{
+  "title": "Emacs%e3%81%a7lua-language-server%e3%82%92%e5%8b%95%e3%81%8b%e3%81%99",
+  "link": "http://localhost:1313/post/tech/20251008094413-emacs%E3%81%A7lua_language_server%E3%82%92%E5%8B%95%E3%81%8B%E3%81%99/",
+  "publishDate": "2025-10-08%2000:00:00"
+},
+
 {
   "title": "Hugo%e3%81%aeGithub%20Style%e3%81%ab%e8%87%aa%e4%bd%9c%e3%81%ae%e3%83%a1%e3%83%8b%e3%83%a5%e3%83%bc%e3%82%92%e4%bb%98%e3%81%91%e3%82%8b",
   "link": "http://localhost:1313/post/tech/20251007164516-hugo%E3%81%AEgithub_style%E3%81%AB%E7%8B%AC%E8%87%AA%E3%81%AE%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%92%E4%BB%98%E3%81%91%E3%82%8B/",
