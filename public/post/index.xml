@@ -6,8 +6,15 @@
     <description>Recent content in Posts on K&#39;s blog</description>
     <generator>Hugo</generator>
     <language>jp-JP</language>
-    <lastBuildDate>Thu, 09 Oct 2025 19:59:26 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 09 Nov 2025 13:28:52 +0900</lastBuildDate>
     <atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>嫉妬論</title>
+      <link>http://localhost:1313/post/book/20251109125003-%E5%AB%89%E5%A6%AC%E8%AB%96/</link>
+      <pubDate>Sun, 09 Nov 2025 00:00:00 +0900</pubDate>
+      <guid>http://localhost:1313/post/book/20251109125003-%E5%AB%89%E5%A6%AC%E8%AB%96/</guid>
+      <description>&lt;p&gt;嫉妬という感情を巡る議論についての本だった。&#xA;とりわけ、嫉妬が類似している者同士の間に生じるものという指摘はとても分かるなあと思った。&lt;/p&gt;&#xA;&lt;p&gt;妬まれないための戦略に、ロゴがデザインに組み込まれているハイブランドが嫌いである理由が言語化されている気がした。&#xA;戦略として、「隠蔽」「否認」「賄賂」「共有」という4つの戦略が挙げられていた。&#xA;この中の隠蔽については、妬みの対象となるものを隠す行動を指す。&#xA;ロゴが入っていることにより、隠蔽という戦略が無効になり、妬みが想起されてしまう。&#xA;これまでは上手く言語かできていなかったけど、上手く言語化されていて、腑に落ちた。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Emacsでlua-language-serverを動かす</title>
       <link>http://localhost:1313/post/tech/20251008094413-emacs%E3%81%A7lua_language_server%E3%82%92%E5%8B%95%E3%81%8B%E3%81%99/</link>
@@ -35,13 +42,6 @@
       <pubDate>Tue, 30 Sep 2025 00:00:00 +0900</pubDate>
       <guid>http://localhost:1313/post/memo/20250930200606-%E3%82%88%E3%81%8F%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B%E7%94%BB%E5%83%8F%E3%82%B5%E3%82%A4%E3%83%88/</guid>
       <description>&lt;p&gt;スライド作りや論文のための図のために使用するフリー素材のサイトをまとめておく。&lt;/p&gt;&#xA;&lt;h2 id=&#34;論文で使うサイト&#34;&gt;論文で使うサイト&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://soco-st.com&#34;&gt;ソコスト&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;最近よく使っている。&lt;/p&gt;&#xA;&lt;p&gt;EPSで画像がダウンロードできる、かつ、画像の一部を好きな色にできるのがお気に入りポイント。&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;!--listend--&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://icooon-mono.com/&#34;&gt;Icon-mono&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;白黒のシンプルなイラストがある。最近使ってない。&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;スライドで使うサイト&#34;&gt;スライドで使うサイト&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.irasutoya.com&#34;&gt;いらすとや&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;圧倒的便利さ。画像を眺めるだけで楽しい。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Test</title>
-      <link>http://localhost:1313/post/test/</link>
-      <pubDate>Sun, 14 Sep 2025 20:57:01 +0900</pubDate>
-      <guid>http://localhost:1313/post/test/</guid>
-      <description>&lt;p&gt;これはてすとです&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
