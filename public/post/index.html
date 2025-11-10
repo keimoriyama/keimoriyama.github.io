@@ -153,7 +153,7 @@
                 </path>
               </svg>
               Posts
-              <span class="Counter">5</span>
+              <span class="Counter">7</span>
             </a>
             
             <a class="UnderlineNav-item " href="http://localhost:1313/introduction/introduction">
@@ -447,7 +447,7 @@
         </path>
       </svg>
       Posts
-      <span class="Counter ">5</span>
+      <span class="Counter ">7</span>
     </a>
   </nav>
 </div>
@@ -498,6 +498,17 @@
 		movie
 	</a>
 	
+	<a class="muted-link mr-3" href="/categories/paper/">
+		
+		<svg class="octicon octicon-package" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+			<path fill-rule="evenodd"
+				d="M8.878.392a1.75 1.75 0 00-1.756 0l-5.25 3.045A1.75 1.75 0 001 4.951v6.098c0 .624.332 1.2.872 1.514l5.25 3.045a1.75 1.75 0 001.756 0l5.25-3.045c.54-.313.872-.89.872-1.514V4.951c0-.624-.332-1.2-.872-1.514L8.878.392zM7.875 1.69a.25.25 0 01.25 0l4.63 2.685L8 7.133 3.245 4.375l4.63-2.685zM2.5 5.677v5.372c0 .09.047.171.125.216l4.625 2.683V8.432L2.5 5.677zm6.25 8.271l4.625-2.683a.25.25 0 00.125-.216V5.677L8.75 8.432v5.516z">
+			</path>
+		</svg>
+		
+		paper
+	</a>
+	
 	<a class="muted-link mr-3" href="/categories/tech/">
 		
 		<svg class="octicon octicon-package" viewBox="0 0 16 16" version="1.1" width="16" height="16">
@@ -544,6 +555,17 @@
 		movie
 	</a>
 	
+	<a class="muted-link mr-3" href="/tags/paper/">
+		
+		<svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+			<path fill-rule="evenodd"
+				d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+			</path>
+		</svg>
+		
+		paper
+	</a>
+	
 	<a class="muted-link mr-3" href="/tags/tech/">
 		
 		<svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
@@ -565,6 +587,117 @@
           <div class="col-12 d-inline-block">
             <div class="d-inline-block mb-1">
               <h3 class="wb-break-all">
+                <a href="http://localhost:1313/post/paper/20251110102131-apigen_automated_pipeline_for_generating_verifiable_and_diverse_function_calling_datasets/">APIGen: Automated Pipeline for Generating Verifiable and Diverse Function-Calling Datasets</a>
+              </h3>
+            </div>
+
+            <div>
+              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
+                <h2 id="この論文のキーメッセージ">🔑この論文のキーメッセージ</h2>
+<ul>
+<li>（1, 2文でまとめる）</li>
+</ul>
+<h2 id="どういう問題に取り組んだのか">🎓どういう問題に取り組んだのか</h2>
+<ul>
+<li>Function Callingとは、自然言語の指示にの応答を生成するために必要なAPIを叩き、必要な情報を得るタスクのことを指す</li>
+<li>この論文では、このタスクの学習に必要なデータを自動生成するためのパイプラインを提案している</li>
+</ul>
+<h2 id="その問題に取り組むことがなぜ重要なのか">🧑‍🎓その問題に取り組むことがなぜ重要なのか</h2>
+<ul>
+<li>既存のfunction callingデータセットは実用のためには不十分である
+<ul>
+<li>例えば、学習データ内で使用されているAPIが一部のカテゴリに偏っている場合、そのデータで学習されたLLMエージェントは他のAPIからのデータの取得ができなくなるという課題がある。</li>
+</ul>
+</li>
+<li>そのため、多様なAPIを扱うデータセットが必要になる</li>
+</ul>
+<h2 id="問題解決に向けたキーアイデアは何か">💡問題解決に向けたキーアイデアは何か</h2>
+<ul>
+<li>提案手法は、データの生成と多段階によるフィルタリングから構成されている</li>
+<li>データの生成
+<ol>
+<li>既存のAPIを用いたQAペアをJSON形式に変する。</li>
+<li>プロンプトはデータ生成の目的になるテンプレートを選択し、QAペアを生成させる</li>
+<li>生成されたペアをJSON形式に変換する</li>
+</ol>
+</li>
+<li>生成されたデータをフィルタするために以下の3つの方法を用いる
+<ol>
+<li>フォーマットの検証：生成されたJSONのフォーマットが正しいか、APIの呼び出し時に適切な引数を指定しているか検証する</li>
+<li>実行可能性の検証：データに含まれたAPIが実行可能であるか検証する、実行可能ではない場合、フィルターする</li>
+<li>文法の検証：複数のLLMを用いて、目的を達成するための関数を呼び出すことができるかなどを総合的に評価する</li>
+</ol>
+</li>
+<li>データの多様性を確保するために、テンプレートを複数用意することや、基データからどのようなデータをサンプリングするかを工夫している</li>
+</ul>
+<h2 id="新たに分かったことは何か">👀新たに分かったことは何か</h2>
+<ul>
+<li>
+<p>ToolBenchを基データとして生成を行った</p>
+<ul>
+<li>基データとして活用するために、いくつかのフィルターを適用したの3500件を使用している</li>
+</ul>
+</li>
+<li>
+<p>生成パイプラインを様々なLLMを用いて検証した所、小規模なモデルは無効なAPIを呼び出る例が多い</p>
+</li>
+<li>
+<p>学習したモデルの評価はBerkley Function-Callingデータセットを使用している</p>
+</li>
+<li>
+<p>FCのために学習されたLLMはGPT-4oなどよりも良い性能を示している</p>
+<ul>
+<li>学習に使用しているLLMは1Bと7Bのモデルなので、より小規模なパラメータになっているかも？</li>
+</ul>
+</li>
+<li>
+<p>各フィルタリングステップにおいて、フィルター後のデータを用いてモデルを学習し、評価した</p>
+<ul>
+<li>上の説明において、フォーマットの検証のみを適用したデータ、1と2を適用したデータ、全てを適用したデータに分けている</li>
+<li>評価結果としては、全てを適用したデータにより学習されたLLMの性能が最も良かった</li>
+<li>このことから、提案したフィルター方法の有効性が分かる</li>
+</ul>
+</li>
+</ul>
+<h2 id="疑問点は何か">❓疑問点は何か</h2>
+<ul>
+<li>GPTとかのモデルの比較って平等な比較になっているのか疑問だった</li>
+<li>生成されたデータの多様性の評価は行われていないのが気になった
+<ul>
+<li>プロンプトのテンプレやデータの持ってき方の工夫で十分なのかな</li>
+</ul>
+</li>
+</ul>
+              </div>
+            </div>
+
+            <div class="f6 text-gray mt-2">
+              
+              
+              <a class="muted-link mr-3" href="/tags/paper">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                paper
+              </a>
+              
+              
+
+              Created
+              <relative-time datetime=" Mon, 10 Nov 2025 00:00:00 &#43;0900" class="no-wrap"
+                title=" Mon, 10 Nov 2025 00:00:00 &#43;0900">
+                Mon, 10 Nov 2025 00:00:00 &#43;0900
+              </relative-time>
+            </div>
+          </div>
+        </li>
+        
+        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
+          <div class="col-12 d-inline-block">
+            <div class="d-inline-block mb-1">
+              <h3 class="wb-break-all">
                 <a href="http://localhost:1313/post/book/20251109125003-%E5%AB%89%E5%A6%AC%E8%AB%96/">嫉妬論</a>
               </h3>
             </div>
@@ -578,6 +711,9 @@
 この中の隠蔽については、妬みの対象となるものを隠す行動を指す。
 ロゴが入っていることにより、隠蔽という戦略が無効になり、妬みが想起されてしまう。
 これまでは上手く言語かできていなかったけど、上手く言語化されていて、腑に落ちた。</p>
+<p>これまでの思想家が嫉妬についてどのように論じてきたかもまとめられていた。
+会話の0.2秒を言語学するという本で、著者が哲学について、当たり前のことに理屈っぽく取り組んでいる様を面白がると良いとあった。
+この本自体ぶ厚くないから、この面白さをを味わうのにとても良かった。</p>
               </div>
             </div>
 
@@ -815,6 +951,32 @@
               <relative-time datetime=" Tue, 30 Sep 2025 00:00:00 &#43;0900" class="no-wrap"
                 title=" Tue, 30 Sep 2025 00:00:00 &#43;0900">
                 Tue, 30 Sep 2025 00:00:00 &#43;0900
+              </relative-time>
+            </div>
+          </div>
+        </li>
+        
+        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
+          <div class="col-12 d-inline-block">
+            <div class="d-inline-block mb-1">
+              <h3 class="wb-break-all">
+                <a href="http://localhost:1313/post/test/">Test</a>
+              </h3>
+            </div>
+
+            <div>
+              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
+                <p>これはてすとです</p>
+              </div>
+            </div>
+
+            <div class="f6 text-gray mt-2">
+              
+
+              Created
+              <relative-time datetime=" Sun, 14 Sep 2025 20:57:01 &#43;0900" class="no-wrap"
+                title=" Sun, 14 Sep 2025 20:57:01 &#43;0900">
+                Sun, 14 Sep 2025 20:57:01 &#43;0900
               </relative-time>
             </div>
           </div>

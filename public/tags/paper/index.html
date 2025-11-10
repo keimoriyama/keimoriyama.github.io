@@ -10,7 +10,7 @@
     <link rel="stylesheet" href='http://localhost:1313/css/light.css' />
     <link rel="stylesheet" href='http://localhost:1313/css/dark.css' />
     <link rel="stylesheet" href='http://localhost:1313/css/syntax.css' />
-    <title>Tech - K&#39;s blog</title>
+    <title>Paper - K&#39;s blog</title>
     
     <link rel="icon" type="image/x-icon" href='/images/github-mark.png'>
     
@@ -25,11 +25,11 @@
 <meta name="keywords"
   content='blog, google analytics' />
 <meta name="robots" content="noodp" />
-<link rel="canonical" href="http://localhost:1313/tags/tech/" />
+<link rel="canonical" href="http://localhost:1313/tags/paper/" />
 
 
 <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="Tech - K&#39;s blog" />
+<meta name="twitter:title" content="Paper - K&#39;s blog" />
 <meta name="twitter:description"
   content="" />
 <meta name="twitter:site" content="http://localhost:1313/" />
@@ -39,11 +39,11 @@
 
 
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Tech - K&#39;s blog">
+<meta property="og:title" content="Paper - K&#39;s blog">
 <meta property="og:description"
   content="" />
-<meta property="og:url" content="http://localhost:1313/tags/tech/" />
-<meta property="og:site_name" content="Tech" />
+<meta property="og:url" content="http://localhost:1313/tags/paper/" />
+<meta property="og:site_name" content="Paper" />
 <meta property="og:image"
   content="http://localhost:1313/">
 <meta property="og:image:width" content="2048">
@@ -52,7 +52,7 @@
 
 
 
-<link href="/tags/tech/index.xml" rel="alternate" type="application/rss+xml" title="K&#39;s blog" />
+<link href="/tags/paper/index.xml" rel="alternate" type="application/rss+xml" title="K&#39;s blog" />
 
 
 
@@ -460,9 +460,9 @@
       
       <div class="TableObject border-bottom border-gray-light py-3">
         <div class="user-repo-search-results-summary TableObject-item TableObject-item--primary v-align-top">
-          <strong>2</strong>
+          <strong>1</strong>
           results
-          for <strong>Tech</strong>
+          for <strong>Paper</strong>
         </div>
         <div class="TableObject-item text-right v-align-top">
           <a class="issues-reset-query text-normal d-inline-block ml-3" href="http://localhost:1313//post/">
@@ -483,110 +483,108 @@
           <div class="col-12 d-inline-block">
             <div class="d-inline-block mb-1">
               <h3 class="wb-break-all">
-                <a href="http://localhost:1313/post/tech/20251008094413-emacs%E3%81%A7lua_language_server%E3%82%92%E5%8B%95%E3%81%8B%E3%81%99/">Emacsでlua-language-serverを動かす</a>
+                <a href="http://localhost:1313/post/paper/20251110102131-apigen_automated_pipeline_for_generating_verifiable_and_diverse_function_calling_datasets/">APIGen: Automated Pipeline for Generating Verifiable and Diverse Function-Calling Datasets</a>
               </h3>
             </div>
 
             <div>
               <div class="col-12 d-inline-block text-gray mb-2 pr-4">
-                <p>Emacsのlsp-modeでlua-language-serverを動かそうとしたら、ハマったのでメモ。</p>
-<p><a href="https://zenn.dev/mozumasu/articles/mozumasu-wezterm-customization">モテるターミナルにカスタマイズしよう（WezTerm）</a>を見て、weztermを設定しようとした。</p>
-<p>設定ファイルである <code>wezterm.lua</code> をEmacsで編集するためにluaの環境を整えようとしたら、Lua-language-serverを <code>lsp-mode</code> が認識しなかった。</p>
-<p>加えて、自動でインストールしようとしたら、emacsがフリーズしてしまった。</p>
-<p>動作させるために必要だった設定は以下の通り。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">lsp-clients-lua-language-server-bin</span> <span class="p">(</span><span class="nf">format</span> <span class="s">&#34;%s/.nix-profile/bin/lua-language-server&#34;</span> <span class="p">(</span><span class="nv">getenv</span> <span class="s">&#34;HOME&#34;</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">      <span class="nv">lsp-clients-lua-language-server-main-location</span> <span class="p">(</span><span class="nf">format</span> <span class="s">&#34;%s/.lua-language-server/main.lua&#34;</span> <span class="p">(</span><span class="nv">getenv</span> <span class="s">&#34;HOME&#34;</span><span class="p">)))</span>
-</span></span><span class="line"><span class="cl"><span class="c1">; reference : https://github.com/emacs-lsp/lsp-mode/issues/4688#issuecomment-3138937688</span>
-</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">my/lsp-clients-lua-language-server-test</span> <span class="p">()</span>
-</span></span><span class="line"><span class="cl">  <span class="s">&#34;(Improved) Test Lua language server binaries and files.&#34;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">or</span> <span class="p">(</span><span class="nb">and</span> <span class="p">(</span><span class="nv">f-exists?</span> <span class="nv">lsp-clients-lua-language-server-main-location</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">           <span class="p">(</span><span class="nv">f-exists?</span> <span class="nv">lsp-clients-lua-language-server-bin</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nv">f-exists?</span> <span class="p">(</span><span class="nf">car</span> <span class="p">(</span><span class="nv">split-string</span> <span class="nv">lsp-clients-lua-language-server-command</span><span class="p">)))))</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">advice-add</span> <span class="nf">#&#39;</span><span class="nv">lsp-clients-lua-language-server-test</span>
-</span></span><span class="line"><span class="cl">            <span class="nb">:override</span> <span class="nf">#&#39;</span><span class="nv">my/lsp-clients-lua-language-server-test</span><span class="p">)</span>
-</span></span></code></pre></div><p>lsp-mode自体にもIssueが上っていたためそれを参考にして設定したら動作した。</p>
-<p>私はnixを使用してlua-language-serverをインストールしている。
-インストールする時に、lua-language-serverの <code>main.lua</code> を適当な場所に配置する。</p>
-<p>この <code>main.lua</code> の場所を <code>lsp-clients-lua-language-server-main-location</code> に設定し、 <code>lsp-clients-lua-language-server-bin</code> にlua-language-serverをインストールしたPathを設定する。</p>
-<p>最後に、<a href="https://github.com/emacs-lsp/lsp-mode/issues/4688#issuecomment-3138937688">このIssueコメント</a>にある関数をコピペしたら動いた。</p>
-<p>参考 : <a href="https://github.com/emacs-lsp/lsp-mode/issues/4688">Externally provided lua-language-server is not recognized #4688</a></p>
+                <h2 id="この論文のキーメッセージ">🔑この論文のキーメッセージ</h2>
+<ul>
+<li>（1, 2文でまとめる）</li>
+</ul>
+<h2 id="どういう問題に取り組んだのか">🎓どういう問題に取り組んだのか</h2>
+<ul>
+<li>Function Callingとは、自然言語の指示にの応答を生成するために必要なAPIを叩き、必要な情報を得るタスクのことを指す</li>
+<li>この論文では、このタスクの学習に必要なデータを自動生成するためのパイプラインを提案している</li>
+</ul>
+<h2 id="その問題に取り組むことがなぜ重要なのか">🧑‍🎓その問題に取り組むことがなぜ重要なのか</h2>
+<ul>
+<li>既存のfunction callingデータセットは実用のためには不十分である
+<ul>
+<li>例えば、学習データ内で使用されているAPIが一部のカテゴリに偏っている場合、そのデータで学習されたLLMエージェントは他のAPIからのデータの取得ができなくなるという課題がある。</li>
+</ul>
+</li>
+<li>そのため、多様なAPIを扱うデータセットが必要になる</li>
+</ul>
+<h2 id="問題解決に向けたキーアイデアは何か">💡問題解決に向けたキーアイデアは何か</h2>
+<ul>
+<li>提案手法は、データの生成と多段階によるフィルタリングから構成されている</li>
+<li>データの生成
+<ol>
+<li>既存のAPIを用いたQAペアをJSON形式に変する。</li>
+<li>プロンプトはデータ生成の目的になるテンプレートを選択し、QAペアを生成させる</li>
+<li>生成されたペアをJSON形式に変換する</li>
+</ol>
+</li>
+<li>生成されたデータをフィルタするために以下の3つの方法を用いる
+<ol>
+<li>フォーマットの検証：生成されたJSONのフォーマットが正しいか、APIの呼び出し時に適切な引数を指定しているか検証する</li>
+<li>実行可能性の検証：データに含まれたAPIが実行可能であるか検証する、実行可能ではない場合、フィルターする</li>
+<li>文法の検証：複数のLLMを用いて、目的を達成するための関数を呼び出すことができるかなどを総合的に評価する</li>
+</ol>
+</li>
+<li>データの多様性を確保するために、テンプレートを複数用意することや、基データからどのようなデータをサンプリングするかを工夫している</li>
+</ul>
+<h2 id="新たに分かったことは何か">👀新たに分かったことは何か</h2>
+<ul>
+<li>
+<p>ToolBenchを基データとして生成を行った</p>
+<ul>
+<li>基データとして活用するために、いくつかのフィルターを適用したの3500件を使用している</li>
+</ul>
+</li>
+<li>
+<p>生成パイプラインを様々なLLMを用いて検証した所、小規模なモデルは無効なAPIを呼び出る例が多い</p>
+</li>
+<li>
+<p>学習したモデルの評価はBerkley Function-Callingデータセットを使用している</p>
+</li>
+<li>
+<p>FCのために学習されたLLMはGPT-4oなどよりも良い性能を示している</p>
+<ul>
+<li>学習に使用しているLLMは1Bと7Bのモデルなので、より小規模なパラメータになっているかも？</li>
+</ul>
+</li>
+<li>
+<p>各フィルタリングステップにおいて、フィルター後のデータを用いてモデルを学習し、評価した</p>
+<ul>
+<li>上の説明において、フォーマットの検証のみを適用したデータ、1と2を適用したデータ、全てを適用したデータに分けている</li>
+<li>評価結果としては、全てを適用したデータにより学習されたLLMの性能が最も良かった</li>
+<li>このことから、提案したフィルター方法の有効性が分かる</li>
+</ul>
+</li>
+</ul>
+<h2 id="疑問点は何か">❓疑問点は何か</h2>
+<ul>
+<li>GPTとかのモデルの比較って平等な比較になっているのか疑問だった</li>
+<li>生成されたデータの多様性の評価は行われていないのが気になった
+<ul>
+<li>プロンプトのテンプレやデータの持ってき方の工夫で十分なのかな</li>
+</ul>
+</li>
+</ul>
               </div>
             </div>
 
             <div class="f6 text-gray mt-2">
               
               
-              <a class="muted-link mr-3" href="/tags/tech">
+              <a class="muted-link mr-3" href="/tags/paper">
                 <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
                   <path fill-rule="evenodd"
                     d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
                   </path>
                 </svg>
-                tech
+                paper
               </a>
               
               
 
               Created
-              <relative-time datetime=" Wed, 08 Oct 2025 00:00:00 &#43;0900" class="no-wrap"
-                title=" Wed, 08 Oct 2025 00:00:00 &#43;0900">
-                Wed, 08 Oct 2025 00:00:00 &#43;0900
-              </relative-time>
-            </div>
-          </div>
-        </li>
-        
-        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
-          <div class="col-12 d-inline-block">
-            <div class="d-inline-block mb-1">
-              <h3 class="wb-break-all">
-                <a href="http://localhost:1313/post/tech/20251007164516-hugo%E3%81%AEgithub_style%E3%81%AB%E7%8B%AC%E8%87%AA%E3%81%AE%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%92%E4%BB%98%E3%81%91%E3%82%8B/">HugoのGithub Styleに自作のメニューを付ける</a>
-              </h3>
-            </div>
-
-            <div>
-              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
-                <p>このブログは<a href="https://gohugo.io">Hugo</a>の<a href="https://themes.gohugo.io/themes/github-style/">Github Style</a>を少し設定している。</p>
-<p>デフォルトだと、自己紹介などがブログに埋もれてしまうためメニューバーに追加した。</p>
-<p>現状、一つ加える度にhtmlを触らないといけない実装になっているのが気になるが、動いているからヨシ!</p>
-<p><code>config.toml</code> に以下の要素を追加して、設定ファイルに追記すれば要素が追加されるようにした。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="p">[[</span><span class="nx">params</span><span class="p">.</span><span class="nx">self</span><span class="p">]]</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">name</span> <span class="p">=</span> <span class="s1">&#39;Self&#39;</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">url</span><span class="p">=</span><span class="s2">&#34;introduction/introduction&#34;</span>
-</span></span></code></pre></div><p>そして、作成したHugoプロジェクト以下に <code>layouts/partial/menu.html</code> を作る。</p>
-<p><code>menus.html</code> の追加のメニューとして以下の変更を加えた。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">{{ range .Site.Params.projects }}
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;UnderlineNav-item
-</span></span></span><span class="line"><span class="cl"><span class="s">          {{ if .IsSection }}  selected  {{ end }}
-</span></span></span><span class="line"><span class="cl"><span class="s">          {{ if eq .Type &#34;</span> <span class="na">tags</span><span class="err">&#34;</span> <span class="err">}}</span> <span class="na">selected</span> <span class="err">{{</span> <span class="na">end</span> <span class="err">}}&#34;</span>
-</span></span><span class="line"><span class="cl">   <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ absURL .url }}&#34;</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">  {{ .name}}
-</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">{{ end }}
-</span></span></code></pre></div><p>既存の実装では、リンクを貼る実装が <code>{{urls.JoinPath .Site.BaseURL url}}</code> になってる。</p>
-<p>だが、上手く動作してくれなかったので <code>{{absURL .url}}</code> という実装にしている。</p>
-              </div>
-            </div>
-
-            <div class="f6 text-gray mt-2">
-              
-              
-              <a class="muted-link mr-3" href="/tags/tech">
-                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                  <path fill-rule="evenodd"
-                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                  </path>
-                </svg>
-                tech
-              </a>
-              
-              
-
-              Created
-              <relative-time datetime=" Tue, 07 Oct 2025 00:00:00 &#43;0900" class="no-wrap"
-                title=" Tue, 07 Oct 2025 00:00:00 &#43;0900">
-                Tue, 07 Oct 2025 00:00:00 &#43;0900
+              <relative-time datetime=" Mon, 10 Nov 2025 00:00:00 &#43;0900" class="no-wrap"
+                title=" Mon, 10 Nov 2025 00:00:00 &#43;0900">
+                Mon, 10 Nov 2025 00:00:00 &#43;0900
               </relative-time>
             </div>
           </div>

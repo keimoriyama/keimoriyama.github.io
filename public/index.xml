@@ -6,14 +6,21 @@
     <description>Recent content on K&#39;s blog</description>
     <generator>Hugo</generator>
     <language>jp-JP</language>
-    <lastBuildDate>Sun, 09 Nov 2025 13:28:52 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 10 Nov 2025 11:17:38 +0900</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>APIGen: Automated Pipeline for Generating Verifiable and Diverse Function-Calling Datasets</title>
+      <link>http://localhost:1313/post/paper/20251110102131-apigen_automated_pipeline_for_generating_verifiable_and_diverse_function_calling_datasets/</link>
+      <pubDate>Mon, 10 Nov 2025 00:00:00 +0900</pubDate>
+      <guid>http://localhost:1313/post/paper/20251110102131-apigen_automated_pipeline_for_generating_verifiable_and_diverse_function_calling_datasets/</guid>
+      <description>&lt;h2 id=&#34;この論文のキーメッセージ&#34;&gt;🔑この論文のキーメッセージ&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;（1, 2文でまとめる）&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;どういう問題に取り組んだのか&#34;&gt;🎓どういう問題に取り組んだのか&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Function Callingとは、自然言語の指示にの応答を生成するために必要なAPIを叩き、必要な情報を得るタスクのことを指す&lt;/li&gt;&#xA;&lt;li&gt;この論文では、このタスクの学習に必要なデータを自動生成するためのパイプラインを提案している&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;その問題に取り組むことがなぜ重要なのか&#34;&gt;🧑‍🎓その問題に取り組むことがなぜ重要なのか&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;既存のfunction callingデータセットは実用のためには不十分である&#xA;&lt;ul&gt;&#xA;&lt;li&gt;例えば、学習データ内で使用されているAPIが一部のカテゴリに偏っている場合、そのデータで学習されたLLMエージェントは他のAPIからのデータの取得ができなくなるという課題がある。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;そのため、多様なAPIを扱うデータセットが必要になる&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;問題解決に向けたキーアイデアは何か&#34;&gt;💡問題解決に向けたキーアイデアは何か&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;提案手法は、データの生成と多段階によるフィルタリングから構成されている&lt;/li&gt;&#xA;&lt;li&gt;データの生成&#xA;&lt;ol&gt;&#xA;&lt;li&gt;既存のAPIを用いたQAペアをJSON形式に変する。&lt;/li&gt;&#xA;&lt;li&gt;プロンプトはデータ生成の目的になるテンプレートを選択し、QAペアを生成させる&lt;/li&gt;&#xA;&lt;li&gt;生成されたペアをJSON形式に変換する&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;生成されたデータをフィルタするために以下の3つの方法を用いる&#xA;&lt;ol&gt;&#xA;&lt;li&gt;フォーマットの検証：生成されたJSONのフォーマットが正しいか、APIの呼び出し時に適切な引数を指定しているか検証する&lt;/li&gt;&#xA;&lt;li&gt;実行可能性の検証：データに含まれたAPIが実行可能であるか検証する、実行可能ではない場合、フィルターする&lt;/li&gt;&#xA;&lt;li&gt;文法の検証：複数のLLMを用いて、目的を達成するための関数を呼び出すことができるかなどを総合的に評価する&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;データの多様性を確保するために、テンプレートを複数用意することや、基データからどのようなデータをサンプリングするかを工夫している&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;新たに分かったことは何か&#34;&gt;👀新たに分かったことは何か&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;ToolBenchを基データとして生成を行った&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;基データとして活用するために、いくつかのフィルターを適用したの3500件を使用している&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;生成パイプラインを様々なLLMを用いて検証した所、小規模なモデルは無効なAPIを呼び出る例が多い&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;学習したモデルの評価はBerkley Function-Callingデータセットを使用している&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;FCのために学習されたLLMはGPT-4oなどよりも良い性能を示している&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;学習に使用しているLLMは1Bと7Bのモデルなので、より小規模なパラメータになっているかも？&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;各フィルタリングステップにおいて、フィルター後のデータを用いてモデルを学習し、評価した&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;上の説明において、フォーマットの検証のみを適用したデータ、1と2を適用したデータ、全てを適用したデータに分けている&lt;/li&gt;&#xA;&lt;li&gt;評価結果としては、全てを適用したデータにより学習されたLLMの性能が最も良かった&lt;/li&gt;&#xA;&lt;li&gt;このことから、提案したフィルター方法の有効性が分かる&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;疑問点は何か&#34;&gt;❓疑問点は何か&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;GPTとかのモデルの比較って平等な比較になっているのか疑問だった&lt;/li&gt;&#xA;&lt;li&gt;生成されたデータの多様性の評価は行われていないのが気になった&#xA;&lt;ul&gt;&#xA;&lt;li&gt;プロンプトのテンプレやデータの持ってき方の工夫で十分なのかな&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
     <item>
       <title>嫉妬論</title>
       <link>http://localhost:1313/post/book/20251109125003-%E5%AB%89%E5%A6%AC%E8%AB%96/</link>
       <pubDate>Sun, 09 Nov 2025 00:00:00 +0900</pubDate>
       <guid>http://localhost:1313/post/book/20251109125003-%E5%AB%89%E5%A6%AC%E8%AB%96/</guid>
-      <description>&lt;p&gt;嫉妬という感情を巡る議論についての本だった。&#xA;とりわけ、嫉妬が類似している者同士の間に生じるものという指摘はとても分かるなあと思った。&lt;/p&gt;&#xA;&lt;p&gt;妬まれないための戦略に、ロゴがデザインに組み込まれているハイブランドが嫌いである理由が言語化されている気がした。&#xA;戦略として、「隠蔽」「否認」「賄賂」「共有」という4つの戦略が挙げられていた。&#xA;この中の隠蔽については、妬みの対象となるものを隠す行動を指す。&#xA;ロゴが入っていることにより、隠蔽という戦略が無効になり、妬みが想起されてしまう。&#xA;これまでは上手く言語かできていなかったけど、上手く言語化されていて、腑に落ちた。&lt;/p&gt;</description>
+      <description>&lt;p&gt;嫉妬という感情を巡る議論についての本だった。&#xA;とりわけ、嫉妬が類似している者同士の間に生じるものという指摘はとても分かるなあと思った。&lt;/p&gt;&#xA;&lt;p&gt;妬まれないための戦略に、ロゴがデザインに組み込まれているハイブランドが嫌いである理由が言語化されている気がした。&#xA;戦略として、「隠蔽」「否認」「賄賂」「共有」という4つの戦略が挙げられていた。&#xA;この中の隠蔽については、妬みの対象となるものを隠す行動を指す。&#xA;ロゴが入っていることにより、隠蔽という戦略が無効になり、妬みが想起されてしまう。&#xA;これまでは上手く言語かできていなかったけど、上手く言語化されていて、腑に落ちた。&lt;/p&gt;&#xA;&lt;p&gt;これまでの思想家が嫉妬についてどのように論じてきたかもまとめられていた。&#xA;会話の0.2秒を言語学するという本で、著者が哲学について、当たり前のことに理屈っぽく取り組んでいる様を面白がると良いとあった。&#xA;この本自体ぶ厚くないから、この面白さをを味わうのにとても良かった。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Emacsでlua-language-serverを動かす</title>
@@ -42,6 +49,20 @@
       <pubDate>Tue, 30 Sep 2025 00:00:00 +0900</pubDate>
       <guid>http://localhost:1313/post/memo/20250930200606-%E3%82%88%E3%81%8F%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B%E7%94%BB%E5%83%8F%E3%82%B5%E3%82%A4%E3%83%88/</guid>
       <description>&lt;p&gt;スライド作りや論文のための図のために使用するフリー素材のサイトをまとめておく。&lt;/p&gt;&#xA;&lt;h2 id=&#34;論文で使うサイト&#34;&gt;論文で使うサイト&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://soco-st.com&#34;&gt;ソコスト&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;最近よく使っている。&lt;/p&gt;&#xA;&lt;p&gt;EPSで画像がダウンロードできる、かつ、画像の一部を好きな色にできるのがお気に入りポイント。&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;!--listend--&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://icooon-mono.com/&#34;&gt;Icon-mono&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;白黒のシンプルなイラストがある。最近使ってない。&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;スライドで使うサイト&#34;&gt;スライドで使うサイト&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.irasutoya.com&#34;&gt;いらすとや&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;圧倒的便利さ。画像を眺めるだけで楽しい。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Projects</title>
+      <link>http://localhost:1313/projects/projects/</link>
+      <pubDate>Sun, 14 Sep 2025 22:53:49 +0900</pubDate>
+      <guid>http://localhost:1313/projects/projects/</guid>
+      <description>&lt;p&gt;This is Project page&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Test</title>
+      <link>http://localhost:1313/post/test/</link>
+      <pubDate>Sun, 14 Sep 2025 20:57:01 +0900</pubDate>
+      <guid>http://localhost:1313/post/test/</guid>
+      <description>&lt;p&gt;これはてすとです&lt;/p&gt;</description>
     </item>
     <item>
       <title>Introduction</title>

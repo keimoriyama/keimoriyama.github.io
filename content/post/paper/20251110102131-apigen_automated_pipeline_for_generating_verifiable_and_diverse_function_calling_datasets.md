@@ -5,7 +5,7 @@ description = "APIGen Automated Pipeline for Generating Verifiable and Dieverse 
 date = 2025-11-10T00:00:00+09:00
 tags = ["paper"]
 categories = ["paper"]
-draft = true
+draft = false
 +++
 
 ## 🔑この論文のキーメッセージ {#この論文のキーメッセージ}

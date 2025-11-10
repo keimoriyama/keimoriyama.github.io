@@ -155,7 +155,7 @@
                 </path>
               </svg>
               Posts
-              <span class="Counter">5</span>
+              <span class="Counter">7</span>
             </a>
             
             <a class="UnderlineNav-item " href="http://localhost:1313/introduction/introduction">
@@ -449,7 +449,7 @@
         </path>
       </svg>
       Posts
-      <span class="Counter ">5</span>
+      <span class="Counter ">7</span>
     </a>
   </nav>
 </div>
@@ -506,6 +506,119 @@
                       d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z">
                     </path>
                   </svg>
+                  <a class="text-bold flex-auto min-width-0" href="http://localhost:1313/post/paper/20251110102131-apigen_automated_pipeline_for_generating_verifiable_and_diverse_function_calling_datasets/">
+                    <span class="repo" title="APIGen: Automated Pipeline for Generating Verifiable and Diverse Function-Calling Datasets">APIGen: Automated Pipeline for Generating Verifiable and Diverse Function-Calling Datasets</span>
+                  </a>
+                </div>
+
+
+                <div name="summary" class="pinned-item-desc text-gray text-small d-block mt-2 mb-3">
+                  <h2 id="この論文のキーメッセージ">🔑この論文のキーメッセージ</h2>
+<ul>
+<li>（1, 2文でまとめる）</li>
+</ul>
+<h2 id="どういう問題に取り組んだのか">🎓どういう問題に取り組んだのか</h2>
+<ul>
+<li>Function Callingとは、自然言語の指示にの応答を生成するために必要なAPIを叩き、必要な情報を得るタスクのことを指す</li>
+<li>この論文では、このタスクの学習に必要なデータを自動生成するためのパイプラインを提案している</li>
+</ul>
+<h2 id="その問題に取り組むことがなぜ重要なのか">🧑‍🎓その問題に取り組むことがなぜ重要なのか</h2>
+<ul>
+<li>既存のfunction callingデータセットは実用のためには不十分である
+<ul>
+<li>例えば、学習データ内で使用されているAPIが一部のカテゴリに偏っている場合、そのデータで学習されたLLMエージェントは他のAPIからのデータの取得ができなくなるという課題がある。</li>
+</ul>
+</li>
+<li>そのため、多様なAPIを扱うデータセットが必要になる</li>
+</ul>
+<h2 id="問題解決に向けたキーアイデアは何か">💡問題解決に向けたキーアイデアは何か</h2>
+<ul>
+<li>提案手法は、データの生成と多段階によるフィルタリングから構成されている</li>
+<li>データの生成
+<ol>
+<li>既存のAPIを用いたQAペアをJSON形式に変する。</li>
+<li>プロンプトはデータ生成の目的になるテンプレートを選択し、QAペアを生成させる</li>
+<li>生成されたペアをJSON形式に変換する</li>
+</ol>
+</li>
+<li>生成されたデータをフィルタするために以下の3つの方法を用いる
+<ol>
+<li>フォーマットの検証：生成されたJSONのフォーマットが正しいか、APIの呼び出し時に適切な引数を指定しているか検証する</li>
+<li>実行可能性の検証：データに含まれたAPIが実行可能であるか検証する、実行可能ではない場合、フィルターする</li>
+<li>文法の検証：複数のLLMを用いて、目的を達成するための関数を呼び出すことができるかなどを総合的に評価する</li>
+</ol>
+</li>
+<li>データの多様性を確保するために、テンプレートを複数用意することや、基データからどのようなデータをサンプリングするかを工夫している</li>
+</ul>
+<h2 id="新たに分かったことは何か">👀新たに分かったことは何か</h2>
+<ul>
+<li>
+<p>ToolBenchを基データとして生成を行った</p>
+<ul>
+<li>基データとして活用するために、いくつかのフィルターを適用したの3500件を使用している</li>
+</ul>
+</li>
+<li>
+<p>生成パイプラインを様々なLLMを用いて検証した所、小規模なモデルは無効なAPIを呼び出る例が多い</p>
+</li>
+<li>
+<p>学習したモデルの評価はBerkley Function-Callingデータセットを使用している</p>
+</li>
+<li>
+<p>FCのために学習されたLLMはGPT-4oなどよりも良い性能を示している</p>
+<ul>
+<li>学習に使用しているLLMは1Bと7Bのモデルなので、より小規模なパラメータになっているかも？</li>
+</ul>
+</li>
+<li>
+<p>各フィルタリングステップにおいて、フィルター後のデータを用いてモデルを学習し、評価した</p>
+<ul>
+<li>上の説明において、フォーマットの検証のみを適用したデータ、1と2を適用したデータ、全てを適用したデータに分けている</li>
+<li>評価結果としては、全てを適用したデータにより学習されたLLMの性能が最も良かった</li>
+<li>このことから、提案したフィルター方法の有効性が分かる</li>
+</ul>
+</li>
+</ul>
+<h2 id="疑問点は何か">❓疑問点は何か</h2>
+<ul>
+<li>GPTとかのモデルの比較って平等な比較になっているのか疑問だった</li>
+<li>生成されたデータの多様性の評価は行われていないのが気になった
+<ul>
+<li>プロンプトのテンプレやデータの持ってき方の工夫で十分なのかな</li>
+</ul>
+</li>
+</ul>
+                </div>
+
+                <p class="mb-0 f6 text-gray">
+                  
+                  
+                  <a href="/tags/paper" class="pinned-item-meta muted-link ">
+                    <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                      <path fill-rule="evenodd"
+                        d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                      </path>
+                    </svg>
+                    paper
+                  </a>
+                  
+                  
+                </p>
+              </div>
+            </div>
+          </li>
+          
+          <li class="col-12 col-md-6 col-lg-6 mb-3 d-flex flex-content-stretch">
+            <div
+              class="Box pinned-item-list-item d-flex p-3 width-full js-pinned-item-list-item public source reorderable sortable-button-item">
+              <div class="pinned-item-list-item-content">
+                <div class="d-flex width-full flex-items-center position-relative">
+                  <svg class="octicon octicon-repo mr-2 text-gray flex-shrink-0" viewBox="0 0 16 16" version="1.1"
+                    width="16" height="16">
+                    <path fill-rule="evenodd"
+                      d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z">
+                    </path>
+                  </svg>
                   <a class="text-bold flex-auto min-width-0" href="http://localhost:1313/post/book/20251109125003-%E5%AB%89%E5%A6%AC%E8%AB%96/">
                     <span class="repo" title="嫉妬論">嫉妬論</span>
                   </a>
@@ -520,6 +633,9 @@
 この中の隠蔽については、妬みの対象となるものを隠す行動を指す。
 ロゴが入っていることにより、隠蔽という戦略が無効になり、妬みが想起されてしまう。
 これまでは上手く言語かできていなかったけど、上手く言語化されていて、腑に落ちた。</p>
+<p>これまでの思想家が嫉妬についてどのように論じてきたかもまとめられていた。
+会話の0.2秒を言語学するという本で、著者が哲学について、当たり前のことに理屈っぽく取り組んでいる様を面白がると良いとあった。
+この本自体ぶ厚くないから、この面白さをを味わうのにとても良かった。</p>
                 </div>
 
                 <p class="mb-0 f6 text-gray">
@@ -771,6 +887,12 @@
     
     <div class="mt-4 position-relative" id="contributions" data='[
 {
+  "title": "APIGen:%20Automated%20Pipeline%20for%20Generating%20Verifiable%20and%20Diverse%20Function-Calling%20Datasets",
+  "link": "http://localhost:1313/post/paper/20251110102131-apigen_automated_pipeline_for_generating_verifiable_and_diverse_function_calling_datasets/",
+  "publishDate": "2025-11-10%2000:00:00"
+},
+
+{
   "title": "%e5%ab%89%e5%a6%ac%e8%ab%96",
   "link": "http://localhost:1313/post/book/20251109125003-%E5%AB%89%E5%A6%AC%E8%AB%96/",
   "publishDate": "2025-11-09%2000:00:00"
@@ -798,6 +920,12 @@
   "title": "%e3%82%88%e3%81%8f%e4%bd%bf%e7%94%a8%e3%81%99%e3%82%8b%e7%94%bb%e5%83%8f%e3%82%b5%e3%82%a4%e3%83%88",
   "link": "http://localhost:1313/post/memo/20250930200606-%E3%82%88%E3%81%8F%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B%E7%94%BB%E5%83%8F%E3%82%B5%E3%82%A4%E3%83%88/",
   "publishDate": "2025-09-30%2000:00:00"
+},
+
+{
+  "title": "Test",
+  "link": "http://localhost:1313/post/test/",
+  "publishDate": "2025-09-14%2020:57:01"
 }
 ]'>
       <div class="js-yearly-contributions">
