@@ -8,9 +8,16 @@ categories = ["paper"]
 draft = false
 +++
 
+## 📄論文情報 {#論文情報}
+
+-   [APIGen: Automated PIpeline for Generating Verifiable and Diverse Function-Calling Datasets](https://www.proceedings.com/content/079/079017-1725open.pdf)
+-   NeurIPS2024
+-   Salesforceの著者らによるもの
+
+
 ## 🔑この論文のキーメッセージ {#この論文のキーメッセージ}
 
--   （1, 2文でまとめる）
+-   LLMのFunction Callingの性能向上のためには、多くのAPIに関する情報があると良い
 
 
 ## 🎓どういう問題に取り組んだのか {#どういう問題に取り組んだのか}
