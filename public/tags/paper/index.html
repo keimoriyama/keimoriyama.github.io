@@ -153,7 +153,7 @@
                 </path>
               </svg>
               Posts
-              <span class="Counter">7</span>
+              <span class="Counter">41</span>
             </a>
             
             <a class="UnderlineNav-item " href="http://localhost:1313/introduction/introduction">
@@ -447,7 +447,7 @@
         </path>
       </svg>
       Posts
-      <span class="Counter ">7</span>
+      <span class="Counter ">41</span>
     </a>
   </nav>
 </div>
@@ -460,7 +460,7 @@
       
       <div class="TableObject border-bottom border-gray-light py-3">
         <div class="user-repo-search-results-summary TableObject-item TableObject-item--primary v-align-top">
-          <strong>1</strong>
+          <strong>18</strong>
           results
           for <strong>Paper</strong>
         </div>
@@ -483,84 +483,202 @@
           <div class="col-12 d-inline-block">
             <div class="d-inline-block mb-1">
               <h3 class="wb-break-all">
-                <a href="http://localhost:1313/post/paper/20251110102131-apigen_automated_pipeline_for_generating_verifiable_and_diverse_function_calling_datasets/">APIGen: Automated Pipeline for Generating Verifiable and Diverse Function-Calling Datasets</a>
+                <a href="http://localhost:1313/post/paper/20260205100956-from_outcomes_to_processes_guiding_prm_learning_from_orm_for_inference_time_alignment/">From Outcomes to Processes: Guiding PRM Learning from ORM for Inference-Time Alignment</a>
               </h3>
             </div>
 
             <div>
               <div class="col-12 d-inline-block text-gray mb-2 pr-4">
-                <h2 id="この論文のキーメッセージ">🔑この論文のキーメッセージ</h2>
+                <h2 id="論文情報">📄論文情報</h2>
+<ul>
+<li><a href="https://aclanthology.org/2025.acl-long.946/">From Outcomes to Processes: Guiding PRM Learning from ORM for Inference-Time Alignment</a></li>
+<li>ACL 2025 Long</li>
+</ul>
+<h2 id="この論文のキーメッセージ">🔑この論文のキーメッセージ</h2>
 <ul>
 <li>（1, 2文でまとめる）</li>
 </ul>
 <h2 id="どういう問題に取り組んだのか">🎓どういう問題に取り組んだのか</h2>
 <ul>
-<li>Function Callingとは、自然言語の指示にの応答を生成するために必要なAPIを叩き、必要な情報を得るタスクのことを指す</li>
-<li>この論文では、このタスクの学習に必要なデータを自動生成するためのパイプラインを提案している</li>
+<li>Reward Guided Searchは、LLMが生成した複数の文章から報酬モデルの値を用いて文章を選択する手法である</li>
+<li>この文章の選択に使用する報酬モデルの出力に一貫性を持たせることを目指す</li>
 </ul>
 <h2 id="その問題に取り組むことがなぜ重要なのか">🧑‍🎓その問題に取り組むことがなぜ重要なのか</h2>
 <ul>
-<li>既存のfunction callingデータセットは実用のためには不十分である
+<li>報酬モデルは、文章の全体を評価するように学習される</li>
+<li>そのため、文章の一部を評価する時に報酬の一貫性が無くなる課題がある
 <ul>
-<li>例えば、学習データ内で使用されているAPIが一部のカテゴリに偏っている場合、そのデータで学習されたLLMエージェントは他のAPIからのデータの取得ができなくなるという課題がある。</li>
+<li>特に、冗長な文章を高く評価する傾向がある</li>
 </ul>
 </li>
-<li>そのため、多様なAPIを扱うデータセットが必要になる</li>
+<li>この報酬モデルを再学習するには計算コストが多くかかるため、既存のモデルを使用しつつ、報酬の計算を工夫することで、より良い文章の選択が可能になる</li>
 </ul>
 <h2 id="問題解決に向けたキーアイデアは何か">💡問題解決に向けたキーアイデアは何か</h2>
 <ul>
-<li>提案手法は、データの生成と多段階によるフィルタリングから構成されている</li>
-<li>データの生成
-<ol>
-<li>既存のAPIを用いたQAペアをJSON形式に変する。</li>
-<li>プロンプトはデータ生成の目的になるテンプレートを選択し、QAペアを生成させる</li>
-<li>生成されたペアをJSON形式に変換する</li>
-</ol>
+<li>スコアの計算時にscore consistencyの分析をしている</li>
+<li>Score Consistencyの定義
+<ul>
+<li>文章AとBにおける報酬値r(A)とr(B)がある時、AとBの部分文字列aとbにおける報酬r(a)とr(b)は、以下の関係が成立する
+<ul>
+<li>r(A)&gt;r(B) -&gt; r(a) &gt; r(b)</li>
+</ul>
 </li>
-<li>生成されたデータをフィルタするために以下の3つの方法を用いる
-<ol>
-<li>フォーマットの検証：生成されたJSONのフォーマットが正しいか、APIの呼び出し時に適切な引数を指定しているか検証する</li>
-<li>実行可能性の検証：データに含まれたAPIが実行可能であるか検証する、実行可能ではない場合、フィルターする</li>
-<li>文法の検証：複数のLLMを用いて、目的を達成するための関数を呼び出すことができるかなどを総合的に評価する</li>
-</ol>
+<li>RGSでは、新しいトークンを選択する時に、これまで生成された文章と新しいトークンを繋げた文章の報酬が最大になるように選択するため、重要な性質になる</li>
+<li>この時、部分文字列を評価することになるため、文章の部分文字列の評価の一貫性が必要</li>
+</ul>
 </li>
-<li>データの多様性を確保するために、テンプレートを複数用意することや、基データからどのようなデータをサンプリングするかを工夫している</li>
+<li>既存の報酬モデルは部分文字列の評価に一貫性が無いため、部分文字列を評価するためのデータセットを構築し、報酬モデルを学習した</li>
+<li>学習には、報酬モデルの分布の差のエントロピーを重みとして使用している</li>
 </ul>
 <h2 id="新たに分かったことは何か">👀新たに分かったことは何か</h2>
 <ul>
 <li>
-<p>ToolBenchを基データとして生成を行った</p>
+<p>文章全体を評価するように学習された報酬モデルは、Score Consistencyを満たさない</p>
 <ul>
-<li>基データとして活用するために、いくつかのフィルターを適用したの3500件を使用している</li>
+<li>
+<p>報酬モデルの学習に使用するデータセットの部分文字列が、良いと評価された文章の方が高くなる割合で評価した</p>
+</li>
+<li>
+<p>5トークンで、57%くらいであり、50トークンまで増やすと60%まで上がる</p>
+</li>
+<li>
+<p>一方で、人間との評価の一致度は高い</p>
+</li>
+<li>
+<p>提案手法により学習した報酬モデルは、5トークンで55%、50トークンで65%まで改善した</p>
+</li>
 </ul>
 </li>
 <li>
-<p>生成パイプラインを様々なLLMを用いて検証した所、小規模なモデルは無効なAPIを呼び出る例が多い</p>
-</li>
-<li>
-<p>学習したモデルの評価はBerkley Function-Callingデータセットを使用している</p>
-</li>
-<li>
-<p>FCのために学習されたLLMはGPT-4oなどよりも良い性能を示している</p>
+<p>ベンチマークにおける評価は、報酬の平均値や文章の多様性などで評価</p>
 <ul>
-<li>学習に使用しているLLMは1Bと7Bのモデルなので、より小規模なパラメータになっているかも？</li>
-</ul>
-</li>
-<li>
-<p>各フィルタリングステップにおいて、フィルター後のデータを用いてモデルを学習し、評価した</p>
-<ul>
-<li>上の説明において、フォーマットの検証のみを適用したデータ、1と2を適用したデータ、全てを適用したデータに分けている</li>
-<li>評価結果としては、全てを適用したデータにより学習されたLLMの性能が最も良かった</li>
-<li>このことから、提案したフィルター方法の有効性が分かる</li>
+<li>様々なチャンクで文章を区切る方法に提案手法により学習した報酬モデルを使用したっぽい</li>
+<li>報酬の値などのスコアを見ると、既存の手法を改善できていると言える</li>
 </ul>
 </li>
 </ul>
 <h2 id="疑問点は何か">❓疑問点は何か</h2>
 <ul>
-<li>GPTとかのモデルの比較って平等な比較になっているのか疑問だった</li>
-<li>生成されたデータの多様性の評価は行われていないのが気になった
+<li>着眼点が良いと思った</li>
+<li>報酬モデルの学習が必要になっているのはネックになっていないのか気になった。</li>
+</ul>
+              </div>
+            </div>
+
+            <div class="f6 text-gray mt-2">
+              
+              
+              <a class="muted-link mr-3" href="/tags/paper">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                paper
+              </a>
+              
+              
+
+              Created
+              <relative-time datetime=" Thu, 05 Feb 2026 00:00:00 &#43;0900" class="no-wrap"
+                title=" Thu, 05 Feb 2026 00:00:00 &#43;0900">
+                Thu, 05 Feb 2026 00:00:00 &#43;0900
+              </relative-time>
+            </div>
+          </div>
+        </li>
+        
+        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
+          <div class="col-12 d-inline-block">
+            <div class="d-inline-block mb-1">
+              <h3 class="wb-break-all">
+                <a href="http://localhost:1313/post/paper/20260119093545-meta_tool_unleash_open_world_function_calling_capabilities_of_general_purpose_large_language_models/">Meta-Tool: Unleash Open-World Function Calling Capabilities of General-Purpose Large Language Models</a>
+              </h3>
+            </div>
+
+            <div>
+              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
+                <h2 id="論文情報">📄論文情報</h2>
 <ul>
-<li>プロンプトのテンプレやデータの持ってき方の工夫で十分なのかな</li>
+<li><a href="https://aclanthology.org/2025.acl-long.1481/">Meta-Tool: Unleash Open-World Function Calling Capabilities of General-Purpose Large Language Models</a></li>
+<li>ACL2025 main</li>
+</ul>
+<h2 id="この論文のキーメッセージ">🔑この論文のキーメッセージ</h2>
+<ul>
+<li>プロンプトにツール情報が含まれない時、LLMの仮説生成+埋め込み検索が効果的である</li>
+</ul>
+<h2 id="どういう問題に取り組んだのか">🎓どういう問題に取り組んだのか</h2>
+<ul>
+<li>LLMと外部ツールの連携をするためのフレームワークを提案する</li>
+<li>外部ツールと連携する時にプロンプトに外部ツールの情報が与えられないケースを想定している</li>
+</ul>
+<h2 id="その問題に取り組むことがなぜ重要なのか">🧑‍🎓その問題に取り組むことがなぜ重要なのか</h2>
+<ul>
+<li>プロンプトにユーザーの指示が含まれるということは、ユーザーが事前に使用できるツールを知っている必要がある
+<ul>
+<li>この状況は、LLMの性能が一定の範囲しか発揮されないため、に制限をかけていることになる</li>
+</ul>
+</li>
+<li>そのため、ユーザーの指示に応じてツールを選択し、呼び出す必要がある
+<ul>
+<li>これを、オープンワールドファンクションコーリングと呼んでいる</li>
+</ul>
+</li>
+</ul>
+<h2 id="問題解決に向けたキーアイデアは何か">💡問題解決に向けたキーアイデアは何か</h2>
+<ul>
+<li>LLMの推論のためのフレームワークと、学習と評価のためのデータセットを構築した</li>
+<li>推論のフレームワークには、hypothesize(仮説生成)-retrieve(検索)-invoke(呼び出し)フレームワークとしている
+<ul>
+<li>Hypothesize(仮説生成)
+<ul>
+<li>LLMがユーザーの指示から、必要なツールの要件や引数を推論する</li>
+</ul>
+</li>
+<li>Retrieve(検索)
+<ul>
+<li>テキスト埋め込みモデルを使用した検索システムを採用している</li>
+<li>推論したツール要件や引数を埋め込み表現に変換し、 類似度を計算している</li>
+</ul>
+</li>
+<li>Invoke(呼び出し)
+<ul>
+<li>ツールに対するクエリを生成する</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>データセットには、既存のデータセットをオープンワールド形式に拡張するための方法を提案している
+<ul>
+<li>拡張として、データセット内で呼び出されているツールをLLMで類似の形式に変換している</li>
+<li>変換後のツール呼び出しについて、推論プロセスを生成する</li>
+<li>この生成した一連のデータをルールベースやLLMベースの方法により評価する</li>
+</ul>
+</li>
+</ul>
+<h2 id="新たに分かったことは何か">👀新たに分かったことは何か</h2>
+<ul>
+<li>simpleタスクとhardタスクがあり、それぞれについてLLMを評価した
+<ul>
+<li>hardは、拡張したツール呼び出しや、呼び出しの回数が多いデータが含まれる</li>
+</ul>
+</li>
+<li>評価の結果、学習したモデルがGPT-4oやオープンソースモデルよりも性能が良いことが分かった</li>
+<li>検索システムは、キーワードベースの手法と比較していて、提案手法の方がhard設定で良い性能であった。
+<ul>
+<li>シンプルな設定では、ますおこまで差がでないように見える</li>
+<li>埋め込みベースの他のモデルと比較しなくて良いのだろうか？</li>
+</ul>
+</li>
+</ul>
+<h2 id="疑問点は何か">❓疑問点は何か</h2>
+<ul>
+<li>仮説生成がどれだけ効くのか気になる</li>
+<li>埋め込みベースの検索が効くのは分かるが、ベースラインが弱いのでは？
+<ul>
+<li>他の良さそうな方法は思いつかないけど</li>
+<li>ツール呼び出しならではの検索システムとか考えることができそう</li>
+<li>引数の型は大きな制約の一つになると思う</li>
 </ul>
 </li>
 </ul>
@@ -582,9 +700,830 @@
               
 
               Created
-              <relative-time datetime=" Mon, 10 Nov 2025 00:00:00 &#43;0900" class="no-wrap"
-                title=" Mon, 10 Nov 2025 00:00:00 &#43;0900">
-                Mon, 10 Nov 2025 00:00:00 &#43;0900
+              <relative-time datetime=" Mon, 19 Jan 2026 00:00:00 &#43;0900" class="no-wrap"
+                title=" Mon, 19 Jan 2026 00:00:00 &#43;0900">
+                Mon, 19 Jan 2026 00:00:00 &#43;0900
+              </relative-time>
+            </div>
+          </div>
+        </li>
+        
+        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
+          <div class="col-12 d-inline-block">
+            <div class="d-inline-block mb-1">
+              <h3 class="wb-break-all">
+                <a href="http://localhost:1313/post/paper/20260119105549-toolace_winning_the_points_of_llm_function_calling/">ToolACE: Winning the Points of LLM Function Calling</a>
+              </h3>
+            </div>
+
+            <div>
+              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
+                <h2 id="論文情報">📄論文情報</h2>
+<ul>
+<li><a href="https://openreview.net/forum?id=8EB8k6DdCU">ToolACE: Winning the Points of LLM Function Calling</a></li>
+<li>ICLR 2025</li>
+</ul>
+<h2 id="この論文のキーメッセージ">🔑この論文のキーメッセージ</h2>
+<ul>
+<li>人工APIをLLMが生成することで、LLMのツール呼び出しの性能を向上させることができる。</li>
+</ul>
+<h2 id="どういう問題に取り組んだのか">🎓どういう問題に取り組んだのか</h2>
+<ul>
+<li>ツール呼び出しタスクの学習に使用するためのデータを生成するパイプラインを作成する</li>
+<li>マルチターンなどの複雑なタスクが必要な状況を想定する</li>
+</ul>
+<h2 id="その問題に取り組むことがなぜ重要なのか">🧑‍🎓その問題に取り組むことがなぜ重要なのか</h2>
+<ul>
+<li>現実世界におけるツール呼び出しは複雑である
+<ul>
+<li>ユーザーの指示の多様さや曖昧さ、zero-shot推論だけではなく、複数のツールの組み合わせが必要なケースがある</li>
+</ul>
+</li>
+</ul>
+<h2 id="問題解決に向けたキーアイデアは何か">💡問題解決に向けたキーアイデアは何か</h2>
+<ul>
+<li>データ生成パイプラインとして以下の3ステップを提案した
+<ol>
+<li>
+<p>ツール生成</p>
+<ul>
+<li>Tool Self-Evolution Synthesisという方法を提案した</li>
+<li>最初に、事前学習用のデータからAPIの情報を抽出する
+<ul>
+<li>人工APIの分類を指しているのかも？</li>
+</ul>
+</li>
+<li>作成したノードを基に、APIが対応している範囲を調査する
+<ul>
+<li>フィードバックをしていると考えて良さそう</li>
+</ul>
+</li>
+<li>フィードバックを基に、APIの仕様を改善する</li>
+</ul>
+</li>
+<li>
+<p>対話生成</p>
+<ul>
+<li>user、assistant、toolのそれぞれのroleをLLMが生成する</li>
+<li>対話の複雑さを評価するために、コンテキストから次のステップのトークンが生成される確率の平均値を使用している</li>
+</ul>
+</li>
+<li>
+<p>検証</p>
+<ul>
+<li>
+<p>ルールベースの評価とLLMによる評価によるデータセットの評価が適用される</p>
+</li>
+<li>
+<p>LLMの評価は、ハルシネーションの確認、レスポンスの一貫性、ツール呼び出しの適切さで評価される</p>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="新たに分かったことは何か">👀新たに分かったことは何か</h2>
+<ul>
+<li>8Bモデルを学習し、BFCLとAPI-Bankで評価した</li>
+<li>BFCLの評価では、オープンソースのモデルよりも良い性能であった
+<ul>
+<li>xLAMよりも性能が良く、GPT-4oの一部のモデルよりも良い</li>
+<li>特に、Non-liveが強くなっている</li>
+</ul>
+</li>
+<li>API-Bankにおいても同様の傾向がある</li>
+</ul>
+<h2 id="疑問点は何か">❓疑問点は何か</h2>
+              </div>
+            </div>
+
+            <div class="f6 text-gray mt-2">
+              
+              
+              <a class="muted-link mr-3" href="/tags/paper">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                paper
+              </a>
+              
+              
+
+              Created
+              <relative-time datetime=" Mon, 19 Jan 2026 00:00:00 &#43;0900" class="no-wrap"
+                title=" Mon, 19 Jan 2026 00:00:00 &#43;0900">
+                Mon, 19 Jan 2026 00:00:00 &#43;0900
+              </relative-time>
+            </div>
+          </div>
+        </li>
+        
+        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
+          <div class="col-12 d-inline-block">
+            <div class="d-inline-block mb-1">
+              <h3 class="wb-break-all">
+                <a href="http://localhost:1313/post/paper/20260115103448-api_bank_a_comprehensive_benchmark_for_tool_augmented_llms/">API-Bank: A Comprehensive Benchmark for Tool-Augmented LLMs</a>
+              </h3>
+            </div>
+
+            <div>
+              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
+                <h2 id="論文情報">📄論文情報</h2>
+<ul>
+<li><a href="https://aclanthology.org/2023.emnlp-main.187/">API-Bank: A Comprehensive Benchmark for Tool-Augmented LLMs</a></li>
+<li>EMNLP 2023 main</li>
+</ul>
+<h2 id="この論文のキーメッセージ">🔑この論文のキーメッセージ</h2>
+<ul>
+<li>Tool Callingタスクのデータの構築において、多様なドメインを含めることが重要である。</li>
+</ul>
+<h2 id="どういう問題に取り組んだのか">🎓どういう問題に取り組んだのか</h2>
+<ul>
+<li>LLMが外部ツールを使用する能力を評価するためのベンチマークを構築した</li>
+</ul>
+<h2 id="その問題に取り組むことがなぜ重要なのか">🧑‍🎓その問題に取り組むことがなぜ重要なのか</h2>
+<ul>
+<li>LLMの性能は学習データに依存するため、最新の情報を応答に反映することができない</li>
+<li>外部ツールを使用することで、最新の情報に対応することができるが、LLMの外部ツールの性能評価はされていない</li>
+</ul>
+<h2 id="問題解決に向けたキーアイデアは何か">💡問題解決に向けたキーアイデアは何か</h2>
+<ul>
+<li>LLMのAPI呼び出し性能を評価するためのベンチマークデータセットと学習データを構築した</li>
+<li>ベンチマークデータセットの構築
+<ul>
+<li>LLMの能力を評価する上で、APIの呼び出し回数と呼び出すことのできるAPIの数を基準にタスクを構築</li>
+<li>タスクの分類は以下の三種類
+<ul>
+<li>Call : 一回以上のAPI呼び出しで、APIの数が少ない</li>
+<li>Retrieve+Call : 一回のAPI呼び出しで、APIの数が多い。LLMには使用できるAPIが与えられない。</li>
+<li>Plan+Retrieve+Call : 複数回の呼び出しで、APIの数が多い。LLMには使用できるAPIが与えられない</li>
+</ul>
+</li>
+<li>ベンチマークに使用されるAPIは、実際に実装している(おそらく架空のAPI)</li>
+<li>アノテーションは人手で行うようにしている</li>
+<li>評価指標は、LLMが作成したクエリの正解率とAPIの応答を基に生成した文章のROUGE-Lスコアを使用している</li>
+</ul>
+</li>
+<li>学習データセットの構築
+<ul>
+<li>データセットはLLMを用いて作成された合成データセットを用いる</li>
+<li>生成は五つのLLMが独立してデータを生成する
+<ol>
+<li>ヘルスケアなどのデータのドメインを指定する</li>
+<li>ドメインを基にAPIを合成する、合成時には実データを例として与えている</li>
+<li>合成されたAPIをランダムサンプリングし、クエリを作成する</li>
+<li>APIのレスポンスを生成する</li>
+<li>データセットに沿う内容になっているか、評価し、フィルターする</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="新たに分かったことは何か">👀新たに分かったことは何か</h2>
+<ul>
+<li>Lynxというモデルを提案手法により作成されたデータセットを用いて評価した</li>
+<li>学習することで、LLMの性能が向上することが分かった
+<ul>
+<li>同じようなデータになっているなら、当然な気がする</li>
+<li>エラーの傾向として、学習前はAPIの呼び出しが無いケースが多いが、学習後はAPIの関数名の間違えているケースに変化した</li>
+</ul>
+</li>
+<li>ベンチマークについては、GPTなどのモデルと比較すると、Callが一番簡単で、Plan+Retrieve+Callが難しい傾向がある</li>
+<li>ToolAlpacaと比較すると、少ないデータで同等の性能が得られた
+<ul>
+<li>高品質なデータであると言えるのか？評価データによって結果が変わりそう</li>
+</ul>
+</li>
+</ul>
+<h2 id="疑問点は何か">❓疑問点は何か</h2>
+<ul>
+<li>ベンチマークと学習データを同じような方針で作成したら、評価結果が良くなるのは当たり前ではと思った</li>
+<li>手法自体は参考になりそう</li>
+</ul>
+              </div>
+            </div>
+
+            <div class="f6 text-gray mt-2">
+              
+              
+              <a class="muted-link mr-3" href="/tags/paper">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                paper
+              </a>
+              
+              
+
+              Created
+              <relative-time datetime=" Thu, 15 Jan 2026 00:00:00 &#43;0900" class="no-wrap"
+                title=" Thu, 15 Jan 2026 00:00:00 &#43;0900">
+                Thu, 15 Jan 2026 00:00:00 &#43;0900
+              </relative-time>
+            </div>
+          </div>
+        </li>
+        
+        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
+          <div class="col-12 d-inline-block">
+            <div class="d-inline-block mb-1">
+              <h3 class="wb-break-all">
+                <a href="http://localhost:1313/post/paper/20260112102806-agenttuning_enabling_generalized_agent_abilities_for_llms/">AgentTuning: Enabling Generalized Agent Abilities for LLMs</a>
+              </h3>
+            </div>
+
+            <div>
+              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
+                <h2 id="論文情報">📄論文情報</h2>
+<ul>
+<li><a href="https://aclanthology.org/2024.findings-acl.181/">AgentTuning: Enabling Generalized Agent Abilities for LLMs</a></li>
+<li>ACL 2024 findings</li>
+</ul>
+<h2 id="この論文のキーメッセージ">🔑この論文のキーメッセージ</h2>
+<ul>
+<li>NLPとエージェントタスクの損失関数の重み付き和を使うことで、NLPタスクの性能を維持しつつ、エージェントタスクの性能が向上する。</li>
+</ul>
+<h2 id="どういう問題に取り組んだのか">🎓どういう問題に取り組んだのか</h2>
+<ul>
+<li>LLMのエージェント性能を向上させるためのデータセット構築、学習パイプラインを提案した</li>
+</ul>
+<h2 id="その問題に取り組むことがなぜ重要なのか">🧑‍🎓その問題に取り組むことがなぜ重要なのか</h2>
+<ul>
+<li>既存のエージェントタスクの手法はプロンプトや特定のエージェントタスク偏っている</li>
+<li>NLPにおけるタスクの能力を維持しつつ、エージェントタスクの能力を向上する必要がある</li>
+</ul>
+<h2 id="問題解決に向けたキーアイデアは何か">💡問題解決に向けたキーアイデアは何か</h2>
+<ul>
+<li>データセットの構築には、self-instrcutを使用している
+<ul>
+<li>既存のデータセットにあるユーザーとエージェントのインタラクションの続きを、GPT-4により生成する</li>
+<li>最終的なエージェントの行動の結果は報酬として評価される
+<ul>
+<li>この報酬は、タスク毎に設計されていて、報酬の値を基にフィルタリングをしている</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>学習に使用するデータセットは、上記の方法で構築されたデータセットと指示学習用のものの二つを用いる
+<ul>
+<li>損失関数には、それぞれのデータセットに対するクロスエントロピーの重み付け和を使用している</li>
+</ul>
+</li>
+</ul>
+<h2 id="新たに分かったことは何か">👀新たに分かったことは何か</h2>
+<ul>
+<li>held-in、heol-outなタスクにおいてGPT-4や3.5と同等の性能を示した
+<ul>
+<li>これが公平な比較になっているかは分からない</li>
+</ul>
+</li>
+<li>公開されているLlamaよりも基本的なエラーが減少している</li>
+<li>学習には、エージェントタスクだけではなく、指示学習用のデータも混ぜた方が汎化性能が向上する
+<ul>
+<li>出力を見た感じでは、想定しているエージェントタスクと違うのかも？</li>
+</ul>
+</li>
+</ul>
+<h2 id="疑問点は何か">❓疑問点は何か</h2>
+<ul>
+<li>損失関数を混ぜることと、継続学習でどちらが有効なのか気になった</li>
+</ul>
+              </div>
+            </div>
+
+            <div class="f6 text-gray mt-2">
+              
+              
+              <a class="muted-link mr-3" href="/tags/paper">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                paper
+              </a>
+              
+              
+
+              Created
+              <relative-time datetime=" Mon, 12 Jan 2026 00:00:00 &#43;0900" class="no-wrap"
+                title=" Mon, 12 Jan 2026 00:00:00 &#43;0900">
+                Mon, 12 Jan 2026 00:00:00 &#43;0900
+              </relative-time>
+            </div>
+          </div>
+        </li>
+        
+        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
+          <div class="col-12 d-inline-block">
+            <div class="d-inline-block mb-1">
+              <h3 class="wb-break-all">
+                <a href="http://localhost:1313/post/paper/20260112094443-lemur_harmonizing_natural_language_and_code_for_language_agents/">Lemur: Harmonizing Natural Language and Code for Language Agents</a>
+              </h3>
+            </div>
+
+            <div>
+              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
+                <h2 id="論文情報">📄論文情報</h2>
+<ul>
+<li><a href="https://openreview.net/forum?id=hNhwSmtXRh">Lemur: Harmonizing Natural Language and Code for Language Agents</a></li>
+<li>ICLR Spotlight</li>
+</ul>
+<h2 id="この論文のキーメッセージ">🔑この論文のキーメッセージ</h2>
+<ul>
+<li>事前学習にコーディングタスクを混ぜることで、実用的なLLMを学習することができる。</li>
+</ul>
+<h2 id="どういう問題に取り組んだのか">🎓どういう問題に取り組んだのか</h2>
+<ul>
+<li>一つのLLMで、言語とプログラミングの能力をバランス良く学習すること</li>
+</ul>
+<h2 id="その問題に取り組むことがなぜ重要なのか">🧑‍🎓その問題に取り組むことがなぜ重要なのか</h2>
+<ul>
+<li>LLMの実環境用のインタラクションにおいて、APIを活用する必要がある
+<ul>
+<li>チャット機能や推論だけではなく、プログラムを適切に構築する能力も必要になっている</li>
+</ul>
+</li>
+<li>ChatGPTなどのClosedなLLMでは、チャット機能とプログラムの両方を実現できている</li>
+<li>一方で、Llamaなどのモデルは、それぞれのタスク専用のLLMを公開するに留まっている</li>
+</ul>
+<h2 id="問題解決に向けたキーアイデアは何か">💡問題解決に向けたキーアイデアは何か</h2>
+<ul>
+<li>事前学習とインストラクションチューニングに分けて学習する。
+<ul>
+<li>事前学習では、コーディングタスクとテキストの割合を10:1にして学習している
+<ul>
+<li>学習に使用したプログラムはThe Stackデータセットを活用している</li>
+</ul>
+</li>
+<li>インストラクションチューニングは既存の複数のデータセットを混ぜて使用している
+<ul>
+<li>ここのデータはテキストのみ</li>
+<li>そこまで工夫している点ではないのかも？</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="新たに分かったことは何か">👀新たに分かったことは何か</h2>
+<ul>
+<li>事前学習にコーディングタスクを混ぜて学習し、インストラクションチューニングを適用することで、自然言語を対象とした推論能力を維持しつつ、コーディングタスクにおける性能が向上している
+<ul>
+<li>プログラミングだけではなく、APIを使用した推論についても性能が向上している。</li>
+<li>事前学習が有効であると言えるのかもしれない。</li>
+</ul>
+</li>
+</ul>
+<h2 id="疑問点は何か">❓疑問点は何か</h2>
+<ul>
+<li>査読でも指摘されていたけど、事前学習のタスクの割合がどれくらい有効なのか分からない
+<ul>
+<li>著者らは継続学習して、調べているらしい</li>
+<li>この辺のバランスを良い感じに調整できたら熱い気がする</li>
+</ul>
+</li>
+</ul>
+              </div>
+            </div>
+
+            <div class="f6 text-gray mt-2">
+              
+              
+              <a class="muted-link mr-3" href="/tags/paper">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                paper
+              </a>
+              
+              
+
+              Created
+              <relative-time datetime=" Mon, 12 Jan 2026 00:00:00 &#43;0900" class="no-wrap"
+                title=" Mon, 12 Jan 2026 00:00:00 &#43;0900">
+                Mon, 12 Jan 2026 00:00:00 &#43;0900
+              </relative-time>
+            </div>
+          </div>
+        </li>
+        
+        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
+          <div class="col-12 d-inline-block">
+            <div class="d-inline-block mb-1">
+              <h3 class="wb-break-all">
+                <a href="http://localhost:1313/post/paper/20260112133140-toolformer_language_models_can_teach_themselves_to_use_tools/">Toolformer: Language Models Can Teach Themselves to Use Tools</a>
+              </h3>
+            </div>
+
+            <div>
+              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
+                <h2 id="論文情報">📄論文情報</h2>
+<ul>
+<li><a href="https://papers.nips.cc/paper_files/paper/2023/hash/d842425e4bf79ba039352da0f658a906-Abstract-Conference.html">Toolformer: Language Models Can Teach Themselves to Use Tools</a></li>
+<li>NeurIPS 2023</li>
+</ul>
+<h2 id="この論文のキーメッセージ">🔑この論文のキーメッセージ</h2>
+<ul>
+<li>データ拡張にAPIを用いることで、下流タスクにおける性能が向上する。</li>
+</ul>
+<h2 id="どういう問題に取り組んだのか">🎓どういう問題に取り組んだのか</h2>
+<ul>
+<li>自己教師有り学習により、外部ツールをLLMが使用する方法を学習する
+<ul>
+<li>評価と違う点があるから、読み違えているかも</li>
+</ul>
+</li>
+<li>テキストデータから、Tool Callingデータセットを作成する</li>
+</ul>
+<h2 id="その問題に取り組むことがなぜ重要なのか">🧑‍🎓その問題に取り組むことがなぜ重要なのか</h2>
+<ul>
+<li>既存の手法は、大規模な人手アノテーションが必要であることや、特定のタスクのみを対象としている</li>
+<li>そのため、学習したLLMの応用先が限られるという課題がある</li>
+</ul>
+<h2 id="問題解決に向けたキーアイデアは何か">💡問題解決に向けたキーアイデアは何か</h2>
+<ul>
+<li>データ拡張にはテキストデータを用いる
+<ul>
+<li>疑似APIをLLMを用いて生成する
+<ul>
+<li>疑似APIの形式は <code>QA(c)-&gt; r</code> のような感じ</li>
+<li>使用するタスクとしては、QAや計算問題を用いている</li>
+</ul>
+</li>
+<li>生成された疑似APIを実行する
+<ul>
+<li>実行は、LLMやPythonなどの環境ですることを想定している</li>
+</ul>
+</li>
+<li>フィルタリングには、重み付きクロスエントロピーを基準として用いている
+<ul>
+<li>生成されたトークンの損失と、何も生成されなかった時の損失の差が閾値よりも大きい時、データセットに含むようにしている</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>推論時には、 <code>-&gt;</code> トークンが生成されるまでデコーディングを行う
+<ul>
+<li>ここでAPIの呼び出しが入るため、APIの結果を挿入して、デコーディングを再開する</li>
+</ul>
+</li>
+</ul>
+<h2 id="新たに分かったことは何か">👀新たに分かったことは何か</h2>
+<ul>
+<li>QAや数学タスクにおける性能が向上した
+<ul>
+<li>下流タスクにおける性能が向上している</li>
+</ul>
+</li>
+<li>Tool Callの評価が無いのが気になる
+<ul>
+<li>目的がTool Callingの性能向上ではなく、Tool Callingを通した性能向上になるのかも</li>
+</ul>
+</li>
+</ul>
+<h2 id="疑問点は何か">❓疑問点は何か</h2>
+<ul>
+<li>評価のやり方が適切であるかどうか分からない
+<ul>
+<li>API callを実際にしているのか？</li>
+<li>下流タスクにおいて外部ツールを呼び出せるなら性能の向上は必然では？とも思う。</li>
+</ul>
+</li>
+<li>このデータ拡張のやり方は面白いと思った。</li>
+</ul>
+              </div>
+            </div>
+
+            <div class="f6 text-gray mt-2">
+              
+              
+              <a class="muted-link mr-3" href="/tags/paper">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                paper
+              </a>
+              
+              
+
+              Created
+              <relative-time datetime=" Mon, 12 Jan 2026 00:00:00 &#43;0900" class="no-wrap"
+                title=" Mon, 12 Jan 2026 00:00:00 &#43;0900">
+                Mon, 12 Jan 2026 00:00:00 &#43;0900
+              </relative-time>
+            </div>
+          </div>
+        </li>
+        
+        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
+          <div class="col-12 d-inline-block">
+            <div class="d-inline-block mb-1">
+              <h3 class="wb-break-all">
+                <a href="http://localhost:1313/post/paper/20251225101002-personalized_text_generation_with_contrastive_activation_steering/">Personalized Text Generation with Contrastive Activation Steering</a>
+              </h3>
+            </div>
+
+            <div>
+              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
+                <h2 id="論文情報">📄論文情報</h2>
+<ul>
+<li><a href="https://aclanthology.org/2025.acl-long.353/">Personalized Text Generation with Contrastive Activation Steering</a></li>
+<li>ACL2025 long</li>
+</ul>
+<h2 id="この論文のキーメッセージ">🔑この論文のキーメッセージ</h2>
+<ul>
+<li>LLMが生成する応答を人間が書いた応答を比較することで、LLMが生成する文章のスタイルを合わせることができる。</li>
+</ul>
+<h2 id="どういう問題に取り組んだのか">🎓どういう問題に取り組んだのか</h2>
+<ul>
+<li>LLMの内部表現に介入して、生成する文章を個人に最適化すること</li>
+</ul>
+<h2 id="その問題に取り組むことがなぜ重要なのか">🧑‍🎓その問題に取り組むことがなぜ重要なのか</h2>
+<ul>
+<li>ユーザー毎に最適化されたテキストを生成する需要が高まっている</li>
+<li>既存の手法はRAGやPEFTによる手法が注目されている
+<ul>
+<li>これらの手法は計算コストが高いことや、ユーザー特有の言い回しに影響されやすい</li>
+</ul>
+</li>
+</ul>
+<h2 id="問題解決に向けたキーアイデアは何か">💡問題解決に向けたキーアイデアは何か</h2>
+<ul>
+<li>LLMの隠れ層に介入することで、個人に最適化された文章を生成すること</li>
+<li>前提として、あるユーザーのプロンプトとそれに対する応答がある</li>
+<li>最初に、LLMはプロンプトに対する応答を生成する</li>
+<li>プロンプトと応答を繋げた文章の最終トークンに該当する特徴量を使って介入する方向の計算をする
+<ul>
+<li>ユーザーの応答を繋げた場合の特徴量をポジティブ、LLMの応答を繋げた場合の特徴量をネガティブとしている
+<ul>
+<li>こうすることで、今のLLMがその人に合わせるためにどれくらい介入すれば良いか計算できる</li>
+</ul>
+</li>
+<li>方向の計算には、様々な方法を使用している</li>
+<li>PCAとか、Mean Differenceなどなど</li>
+</ul>
+</li>
+<li>ここで計算したベクトルを用いて介入する</li>
+</ul>
+<h2 id="新たに分かったことは何か">👀新たに分かったことは何か</h2>
+<ul>
+<li>個別最適化ベンチマークのLaMPで評価した
+<ul>
+<li>短文を評価するものと長文を評価するものの二つがある</li>
+</ul>
+</li>
+<li>提案手法は、RAGやPEFTの手法よりも良い性能を示している</li>
+<li>介入量により性能が大きく変わる
+<ul>
+<li>提案手法により推定された介入ベクトルにおいて正の方向に介入するとユーザーのスタイルを反映しやすくなるが、負の方向にするとスタイルが関係無くなってしまう</li>
+</ul>
+</li>
+</ul>
+<h2 id="疑問点は何か">❓疑問点は何か</h2>
+<ul>
+<li>実験のスタイルベクトルの計算には何を使用したのだろうか？
+<ul>
+<li>スタイルベクトルの計算方法によって性能が変わったりするのかな</li>
+</ul>
+</li>
+</ul>
+              </div>
+            </div>
+
+            <div class="f6 text-gray mt-2">
+              
+              
+              <a class="muted-link mr-3" href="/tags/paper">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                paper
+              </a>
+              
+              
+
+              Created
+              <relative-time datetime=" Thu, 25 Dec 2025 00:00:00 &#43;0900" class="no-wrap"
+                title=" Thu, 25 Dec 2025 00:00:00 &#43;0900">
+                Thu, 25 Dec 2025 00:00:00 &#43;0900
+              </relative-time>
+            </div>
+          </div>
+        </li>
+        
+        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
+          <div class="col-12 d-inline-block">
+            <div class="d-inline-block mb-1">
+              <h3 class="wb-break-all">
+                <a href="http://localhost:1313/post/paper/20251224102456-activation_steering_decoding_mitigating_hallucination_in_large_vision_language_models_through_bidirectional_hidden_state_intervention/">Activation Steering Decoding: Mitigating Hallucination in Large Vision-Language Models through Bidirectional Hidden State Intervention</a>
+              </h3>
+            </div>
+
+            <div>
+              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
+                <h2 id="論文情報">📄論文情報</h2>
+<ul>
+<li><a href="https://aclanthology.org/2025.acl-long.634/">Activation Steering Decoding: Mitigating Hallucination in Large Vision-Language Models through Bidirectional Hidden State Intervention</a></li>
+<li>ACL 2025</li>
+<li></li>
+</ul>
+<h2 id="この論文のキーメッセージ">🔑この論文のキーメッセージ</h2>
+<ul>
+<li>（1, 2文でまとめる）</li>
+</ul>
+<h2 id="どういう問題に取り組んだのか">🎓どういう問題に取り組んだのか</h2>
+<ul>
+<li>Vison-Languageモデル(VLM)の内部表現に介入することで、ハルシネーションを防ぐこと
+<ul>
+<li>ここでのハルシネーションは、画像に写っていない物体についてモデルが言及する現象を指す</li>
+</ul>
+</li>
+</ul>
+<h2 id="その問題に取り組むことがなぜ重要なのか">🧑‍🎓その問題に取り組むことがなぜ重要なのか</h2>
+<ul>
+<li>VLMのハルシネーションを防ぐことは、実用上重要</li>
+<li>既存の手法はデータの品質や損失関数の工夫などでこれに対処してきた
+<ul>
+<li>学習に必要な計算コストが大きいため、実地に適応するために時間がかかる</li>
+</ul>
+</li>
+<li>他の学習無しの手法では画像の優先度を上げるようにしているが、画像内のAttentionなどの特定の仮定に依存している</li>
+</ul>
+<h2 id="問題解決に向けたキーアイデアは何か">💡問題解決に向けたキーアイデアは何か</h2>
+<ul>
+<li>MSCOCOを使用して、VLMの中間表現をProbingする。
+<ul>
+<li>ハルシネーションをしているかどうかは、トークンがMSCOCOのクラスの単語がそれの類義語を含むかどうかで判定している</li>
+</ul>
+</li>
+<li>介入するベクトルは、ハルシネーションが無いトークンの中間表現の平均ベクトルからハルシネーションしているトークンの中間表現の平均ベクトルを引いたベクトルを用いる</li>
+<li>文章の生成時には、正の方向と負の方向に介入した二つのモデルが生成するロジットを足したものを使用している
+<ul>
+<li>介入する量は個別に設定している</li>
+</ul>
+</li>
+</ul>
+<h2 id="新たに分かったことは何か">👀新たに分かったことは何か</h2>
+<ul>
+<li>ベンチマークにおける評価では、正解率とF1スコアが改善している
+<ul>
+<li>使用するデータはハルシネーションのベンチマーク</li>
+<li>既存のハルシネーション対策をする手法よりも良くなっている</li>
+<li>既存の画像理解ベンチマークにおいても他の手法と同等の性能になっている</li>
+</ul>
+</li>
+<li>介入量毎の性能を見ると、正の方向への介入量はパフォーマンスに大きく影響する</li>
+</ul>
+<h2 id="疑問点は何か">❓疑問点は何か</h2>
+<ul>
+<li>ハイパラの量が増えているのは良いのか？</li>
+<li>著者らも言及しているが、カテゴリ名などはMSCOCOに依存している
+<ul>
+<li>これ難しい問題だと思った</li>
+</ul>
+</li>
+</ul>
+              </div>
+            </div>
+
+            <div class="f6 text-gray mt-2">
+              
+              
+              <a class="muted-link mr-3" href="/tags/paper">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                paper
+              </a>
+              
+              
+
+              Created
+              <relative-time datetime=" Wed, 24 Dec 2025 00:00:00 &#43;0900" class="no-wrap"
+                title=" Wed, 24 Dec 2025 00:00:00 &#43;0900">
+                Wed, 24 Dec 2025 00:00:00 &#43;0900
+              </relative-time>
+            </div>
+          </div>
+        </li>
+        
+        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
+          <div class="col-12 d-inline-block">
+            <div class="d-inline-block mb-1">
+              <h3 class="wb-break-all">
+                <a href="http://localhost:1313/post/paper/20251223094430-calibrating_llm_confidence_by_probing_perturbed_representation_stability/">Calibrating LLM Confidence by Probing Perturbed Representation Stability</a>
+              </h3>
+            </div>
+
+            <div>
+              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
+                <h2 id="論文情報">📄論文情報</h2>
+<ul>
+<li><a href="https://aclanthology.org/2025.emnlp-main.530/">Calibrating LLM Confidence by Probing Perturbed Representation Stability</a></li>
+<li>EMNLP 2025 main</li>
+</ul>
+<h2 id="この論文のキーメッセージ">🔑この論文のキーメッセージ</h2>
+<ul>
+<li>対照学習を使用することで、LLMの特徴と応答の一致度が向上する</li>
+</ul>
+<h2 id="どういう問題に取り組んだのか">🎓どういう問題に取り組んだのか</h2>
+<ul>
+<li>LLMの内部表現と出力文章の一致度を揃えるようにモデルを調整すること</li>
+</ul>
+<h2 id="その問題に取り組むことがなぜ重要なのか">🧑‍🎓その問題に取り組むことがなぜ重要なのか</h2>
+<ul>
+<li>LLMが割り当てる確率には、間違いの応答に高い確率を割り当てるなどの課題がある</li>
+<li>正確な応答に高い確率を割り当てるために、内部表現を調整する手法では複数の好ましい特性に対応することが難しい</li>
+</ul>
+<h2 id="問題解決に向けたキーアイデアは何か">💡問題解決に向けたキーアイデアは何か</h2>
+<ol>
+<li>トークン単位でLLMの最終層に摂動を加える
+<ul>
+<li>勾配を使用して摂動を加える</li>
+<li>損失関数は隠れ層の状態から正解トークンを予測する確率のクロスエントロピーを使用している</li>
+<li>パラメータを更新する時と逆方向の勾配を摂動として加える</li>
+<li>摂動を加えた時のロジットを2.で使用する</li>
+<li>この摂動を加えるステップはS回行う</li>
+</ul>
+</li>
+<li>この摂動に影響のある特徴を抽出する
+<ul>
+<li>特徴量はトークン毎に抽出する</li>
+<li>このでも特徴量とは、ロジットや勾配のL2ノルムなどを指す</li>
+<li>この特徴量に対して平均などの統計処理を加えた値を最終的な特徴量とする</li>
+</ul>
+</li>
+<li>この特徴量から確信度(確率のことか？)を予測する分類器を学習する
+<ul>
+<li>分類器は二つ用いる</li>
+<li>トークンの特徴量毎に正解、不正解を予測する分類器と文章単位で予測する分類器
+<ul>
+<li>文章単位で予測する分類器は、トークン単位の分類器が抽出した特徴量を連結した特徴量を使用して予測している</li>
+<li>このでの特徴量は、モデルの最終出力を指す</li>
+</ul>
+</li>
+<li>トークン単位の分類器はMLP、文章単位の分類器は畳み込みを使用している</li>
+<li>目的関数はmax-margin損失を使用する
+<ul>
+<li>負例はロジットの値を基に決めている</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="新たに分かったことは何か">👀新たに分かったことは何か</h2>
+<ul>
+<li>評価は選択問題を対象とした</li>
+<li>評価指標には、Expected Calibration ErrorとBarier Scoreを使用している</li>
+<li>分類問題においては、ECEが他の指標よりもよく改善している
+<ul>
+<li>加えて、正解率などの指標も改善することが分かった</li>
+</ul>
+</li>
+<li>生成タスクにおいても改善できることが分かった</li>
+</ul>
+<h2 id="疑問点は何か">❓疑問点は何か</h2>
+<ul>
+<li>他のドメインにおける有効性が気になる</li>
+<li>最終層だけで有効だったのかな
+<ul>
+<li>他のレイヤーの効果も気になる</li>
+</ul>
+</li>
+</ul>
+              </div>
+            </div>
+
+            <div class="f6 text-gray mt-2">
+              
+              
+              <a class="muted-link mr-3" href="/tags/paper">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                paper
+              </a>
+              
+              
+
+              Created
+              <relative-time datetime=" Tue, 23 Dec 2025 00:00:00 &#43;0900" class="no-wrap"
+                title=" Tue, 23 Dec 2025 00:00:00 &#43;0900">
+                Tue, 23 Dec 2025 00:00:00 &#43;0900
               </relative-time>
             </div>
           </div>
@@ -597,7 +1536,7 @@
           <button class="btn btn-outline BtnGroup-item" disabled="disabled">Previous</button>
           
           
-          <button class="btn btn-outline BtnGroup-item" disabled="disabled">Next</button>
+          <a rel="nofollow" class="btn btn-outline BtnGroup-item" href="/tags/paper/page/2/">Next</a>
           
         </div>
       </div>

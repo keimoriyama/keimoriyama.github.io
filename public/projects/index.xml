@@ -6,14 +6,6 @@
     <description>Recent content in Projects on K&#39;s blog</description>
     <generator>Hugo</generator>
     <language>jp-JP</language>
-    <lastBuildDate>Sun, 09 Nov 2025 13:18:30 +0900</lastBuildDate>
     <atom:link href="http://localhost:1313/projects/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Projects</title>
-      <link>http://localhost:1313/projects/projects/</link>
-      <pubDate>Sun, 14 Sep 2025 22:53:49 +0900</pubDate>
-      <guid>http://localhost:1313/projects/projects/</guid>
-      <description>&lt;p&gt;This is Project page&lt;/p&gt;</description>
-    </item>
   </channel>
 </rss>

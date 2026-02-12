@@ -2,32 +2,143 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/post/paper/20251110102131-apigen_automated_pipeline_for_generating_verifiable_and_diverse_function_calling_datasets/</loc>
-    <lastmod>2025-11-10T11:17:04+09:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/categories/</loc>
-    <lastmod>2025-11-10T11:17:04+09:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/</loc>
-    <lastmod>2025-11-10T11:17:04+09:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/categories/paper/</loc>
-    <lastmod>2025-11-10T11:17:04+09:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/paper/</loc>
-    <lastmod>2025-11-10T11:17:04+09:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/post/</loc>
-    <lastmod>2025-11-10T11:17:04+09:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2025-11-10T11:17:04+09:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/categories/book/</loc>
-    <lastmod>2025-11-09T13:42:59+09:00</lastmod>
+    <lastmod>2026-02-12T21:19:22+09:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/book/</loc>
-    <lastmod>2025-11-09T13:42:59+09:00</lastmod>
+    <lastmod>2026-02-12T21:19:22+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/</loc>
+    <lastmod>2026-02-12T21:19:22+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2026-02-12T21:19:22+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/</loc>
+    <lastmod>2026-02-12T21:19:22+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2026-02-12T21:19:22+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/book/20260212210228-%E3%81%BE%E3%81%90%E3%81%95%E6%A1%B6%E3%81%AE%E7%8A%AC/</loc>
+    <lastmod>2026-02-12T21:15:10+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/book/20260207211241-%E3%83%A8%E3%83%AB%E3%82%AC%E3%82%AA%E6%AE%BA%E4%BA%BA%E4%BA%8B%E4%BB%B6/</loc>
+    <lastmod>2026-02-12T21:19:22+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/paper/20260205100956-from_outcomes_to_processes_guiding_prm_learning_from_orm_for_inference_time_alignment/</loc>
+    <lastmod>2026-02-05T11:10:41+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/paper/</loc>
+    <lastmod>2026-02-05T11:10:41+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/paper/</loc>
+    <lastmod>2026-02-05T11:10:41+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/book/20260130142055-%E4%B8%80%E4%B9%9D%E5%85%AB%E5%9B%9B_%E5%9B%9B_%E3%82%A6%E3%82%A4%E3%82%B0%E3%83%AB%E6%BD%9C%E8%A1%8C/</loc>
+    <lastmod>2026-01-30T14:52:26+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/book/20260121194325-%E3%82%AB%E3%82%B5%E3%82%B5%E3%82%AE%E6%AE%BA%E4%BA%BA%E4%BA%8B%E4%BB%B6/</loc>
+    <lastmod>2026-02-12T21:18:21+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/paper/20260119093545-meta_tool_unleash_open_world_function_calling_capabilities_of_general_purpose_large_language_models/</loc>
+    <lastmod>2026-01-19T10:42:39+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/paper/20260119105549-toolace_winning_the_points_of_llm_function_calling/</loc>
+    <lastmod>2026-01-19T13:12:26+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/book/20260117103018-%E3%83%95%E3%82%A1%E3%83%A9%E3%82%AA%E3%81%AE%E5%AF%86%E5%AE%A4/</loc>
+    <lastmod>2026-01-17T10:57:24+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/paper/20260115103448-api_bank_a_comprehensive_benchmark_for_tool_augmented_llms/</loc>
+    <lastmod>2026-01-15T14:01:52+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/book/20260114185025-%E6%9C%89%E7%BD%AA_%E3%81%A8ai%E3%81%AF%E5%91%8A%E3%81%92%E3%81%9F/</loc>
+    <lastmod>2026-01-14T19:13:00+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/book/20260113191528-%E6%96%87%E5%8C%96%E7%B3%BB%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E9%87%8E%E7%90%83%E5%85%A5%E9%96%80/</loc>
+    <lastmod>2026-01-13T19:31:17+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/paper/20260112102806-agenttuning_enabling_generalized_agent_abilities_for_llms/</loc>
+    <lastmod>2026-01-12T11:30:22+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/game/</loc>
+    <lastmod>2026-01-12T23:41:23+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/game/</loc>
+    <lastmod>2026-01-12T23:41:23+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/paper/20260112094443-lemur_harmonizing_natural_language_and_code_for_language_agents/</loc>
+    <lastmod>2026-01-12T10:23:00+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/paper/20260112133140-toolformer_language_models_can_teach_themselves_to_use_tools/</loc>
+    <lastmod>2026-01-12T14:28:25+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/game/20260112232718-%E9%83%BD%E5%B8%82%E4%BC%9D%E8%AA%AC%E8%A7%A3%E4%BD%93%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC/</loc>
+    <lastmod>2026-01-12T23:41:23+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/book/20260107224725-%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B9%E3%83%91%E3%82%A4_%E3%82%A2%E3%83%B3%E3%82%B5%E3%83%B3%E3%83%96%E3%83%AB/</loc>
+    <lastmod>2026-01-07T22:59:50+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/book/20260104175930-%E5%A4%9C%E3%81%8C%E3%81%A9%E3%82%8C%E3%81%BB%E3%81%A9%E6%9A%97%E3%81%8F%E3%81%A6%E3%82%82/</loc>
+    <lastmod>2026-01-05T20:44:57+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/book/20260104104718-%E9%81%8E%E7%96%8E%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9/</loc>
+    <lastmod>2026-01-04T17:59:21+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/book/20260103105046-%E3%83%8D%E3%83%83%E3%83%88%E6%80%AA%E8%AB%87%E3%81%AE%E6%B0%91%E4%BF%97%E5%AD%A6/</loc>
+    <lastmod>2026-01-03T11:29:43+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/book/20260102090945-%E8%99%9A%E3%81%AE%E4%BC%BD%E8%97%8D/</loc>
+    <lastmod>2026-01-03T11:10:21+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/paper/20251225101002-personalized_text_generation_with_contrastive_activation_steering/</loc>
+    <lastmod>2025-12-25T10:57:39+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/book/20251225223734-%E3%82%88%E3%81%84%E5%AF%BE%E7%AB%8B_%E6%82%AA%E3%81%84%E5%AF%BE%E7%AB%8B/</loc>
+    <lastmod>2025-12-25T22:52:59+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/paper/20251224102456-activation_steering_decoding_mitigating_hallucination_in_large_vision_language_models_through_bidirectional_hidden_state_intervention/</loc>
+    <lastmod>2025-12-24T11:16:35+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/paper/20251223094430-calibrating_llm_confidence_by_probing_perturbed_representation_stability/</loc>
+    <lastmod>2025-12-23T11:08:45+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/book/20251221094009-%E3%82%A4%E3%83%A9%E3%83%B3%E3%81%AE%E5%9C%B0%E4%B8%8B%E4%B8%96%E7%95%8C/</loc>
+    <lastmod>2025-12-21T14:50:46+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/book/20251209222259-%E3%82%AB%E3%82%A6%E3%83%B3%E3%82%BB%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%A8%E3%81%AF%E4%BD%95%E3%81%8B_%E5%A4%89%E5%8C%96%E3%81%99%E3%82%8B%E3%81%A8%E3%81%84%E3%81%86%E3%81%93%E3%81%A8/</loc>
+    <lastmod>2025-12-11T20:31:45+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/paper/20251128102014-learning_to_reasson_from_feedback_as_test_time/</loc>
+    <lastmod>2025-11-28T11:00:47+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/paper/20251125105451-personalized_llm_decoding_via_contrasting_personal_preference/</loc>
+    <lastmod>2025-11-25T13:20:14+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/paper/20251124095855-self_guided_function_calling_in_large_language_models_via_stepwise_experience_recall/</loc>
+    <lastmod>2025-11-24T10:45:14+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/paper/20251122130944-axbench_steering_llms_even_simple_baselines_outperform_sparse_autoencoders/</loc>
+    <lastmod>2025-11-22T14:38:35+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/book/20251122182948-%E3%82%A4%E3%83%B3/</loc>
+    <lastmod>2025-11-22T20:53:10+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/book/%E3%83%96%E3%83%A9%E3%83%83%E3%83%89%E3%82%B3%E3%83%90%E3%83%AB%E3%83%88/</loc>
+    <lastmod>2025-11-20T21:42:45+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/paper/20251118124125-saes_are_good_for_steering_if_you_select_the_right_features/</loc>
+    <lastmod>2025-11-18T13:44:11+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/paper/20251117145542-gorilla_large_language_model_connected_with_massive_apis/</loc>
+    <lastmod>2025-11-17T15:40:23+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/paper/20251115102210-sae_ssv_supervised_steering_in_sparse_representation_spaces_for_reliable_control_of_language_models/</loc>
+    <lastmod>2025-11-17T15:40:46+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/paper/20251110102131-apigen_automated_pipeline_for_generating_verifiable_and_diverse_function_calling_datasets/</loc>
+    <lastmod>2025-11-10T13:28:57+09:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/post/book/20251109125003-%E5%AB%89%E5%A6%AC%E8%AB%96/</loc>
     <lastmod>2025-11-09T13:42:59+09:00</lastmod>
@@ -62,15 +173,6 @@
     <loc>http://localhost:1313/post/memo/20250930200606-%E3%82%88%E3%81%8F%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B%E7%94%BB%E5%83%8F%E3%82%B5%E3%82%A4%E3%83%88/</loc>
     <lastmod>2025-11-09T13:18:30+09:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/projects/</loc>
-    <lastmod>2025-11-09T13:18:30+09:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/projects/projects/</loc>
-    <lastmod>2025-11-09T13:18:30+09:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/post/test/</loc>
-    <lastmod>2025-11-09T13:18:30+09:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/introduction/introduction/</loc>
     <lastmod>2025-11-09T13:18:30+09:00</lastmod>
   </url><url>
@@ -79,5 +181,7 @@
   </url><url>
     <loc>http://localhost:1313/readme/</loc>
     <lastmod>2025-11-09T13:18:30+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/projects/</loc>
   </url>
 </urlset>
