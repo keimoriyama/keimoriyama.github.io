@@ -153,7 +153,7 @@
                 </path>
               </svg>
               Posts
-              <span class="Counter">41</span>
+              <span class="Counter">44</span>
             </a>
             
             <a class="UnderlineNav-item " href="http://localhost:1313/introduction/introduction">
@@ -447,7 +447,7 @@
         </path>
       </svg>
       Posts
-      <span class="Counter ">41</span>
+      <span class="Counter ">44</span>
     </a>
   </nav>
 </div>
@@ -604,6 +604,218 @@
         
       
       <ul>
+        
+        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
+          <div class="col-12 d-inline-block">
+            <div class="d-inline-block mb-1">
+              <h3 class="wb-break-all">
+                <a href="http://localhost:1313/post/paper/20251124095855-self_guided_function_calling_in_large_language_models_via_stepwise_experience_recall/">Self-Guided Function Calling in Large Language Models via Stepwise Experience Recall</a>
+              </h3>
+            </div>
+
+            <div>
+              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
+                <h2 id="論文情報">📄論文情報</h2>
+<ul>
+<li><a href="https://aclanthology.org/2025.findings-emnlp.574/">Self-Guided Function Calling in Large Language Models via Stepwise Experience Recall</a></li>
+<li>EMNLP 2025 findings</li>
+</ul>
+<h2 id="この論文のキーメッセージ">🔑この論文のキーメッセージ</h2>
+<ul>
+<li>LLMのFunction Callingタスクのデータの拡張のためには、呼び出されているタスクの一致度なども入れると良い</li>
+</ul>
+<h2 id="どういう問題に取り組んだのか">🎓どういう問題に取り組んだのか</h2>
+<ul>
+<li>LLMを外部APIと連携するタスクであるFunction Callingの性能を向上するような学習する</li>
+<li>学習に使用するプロンプトに含める例を工夫する手法にしている</li>
+</ul>
+<h2 id="その問題に取り組むことがなぜ重要なのか">🧑‍🎓その問題に取り組むことがなぜ重要なのか</h2>
+<ul>
+<li>学習データやモデルのパラメータ数を単に増やしても、実世界インタラクションは解決することができない</li>
+<li>既存のFunction Callingの学習手法は、具体例を手動で付与しているため大規模にしづらい課題がある</li>
+</ul>
+<h2 id="問題解決に向けたキーアイデアは何か">💡問題解決に向けたキーアイデアは何か</h2>
+<ul>
+<li>類似の例を取得するための方法として、以下の三種類の指標を用いる
+<ol>
+<li>ユーザーのクエリと軌跡の埋め込み表現の類似度
+<ul>
+<li>軌跡とは、ユーザーの入力と呼び出されたツールの応答を複数ステップ繰り返したものを指す</li>
+<li>類似度の指標には、正規化コサイン類似度を使用する</li>
+</ul>
+</li>
+<li>呼び出しツールの一致度
+<ul>
+<li>実際に使用されているツールの一致度を使用している</li>
+</ul>
+</li>
+<li>意図アラインメント
+<ul>
+<li>使用する意図は、事前に定義されているクラスに分類されている</li>
+<li>類似度の検索に使用する履歴が与えられた時に意図を何らかの方法で推定しているのかも？</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>最終的な類似度は、これらの重み付け和になっている</li>
+<li>類似度を計測するためのデータ集合は新たな軌跡が得られた時に更新する
+<ul>
+<li>LLMでユーザーの意図が達成できたと分類された時にデータ集合に追加する</li>
+</ul>
+</li>
+</ul>
+<h2 id="新たに分かったことは何か">👀新たに分かったことは何か</h2>
+<ul>
+<li>ToolQAやτ-benchによる評価では、既存手法よりも概ね良い性能であった
+<ul>
+<li>ベースライン手法はTool Augmented LLMらしい</li>
+</ul>
+</li>
+<li>Ablation Studyでは、2と3の指標のどちらも重要っぽいことが示されている
+<ul>
+<li>ToolQAのEasyでは3を無くすとスコアが大きく下がり、Hardでは2を無くす時が大きくスコアが下がった</li>
+<li>全体的には3の影響度が大きそうだけど、これは良く分かんないなあ</li>
+</ul>
+</li>
+</ul>
+<h2 id="疑問点は何か">❓疑問点は何か</h2>
+<p>特になし</p>
+              </div>
+            </div>
+
+            <div class="f6 text-gray mt-2">
+              
+              
+              <a class="muted-link mr-3" href="/tags/paper">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                paper
+              </a>
+              
+              
+
+              Created
+              <relative-time datetime=" Mon, 24 Nov 2025 00:00:00 &#43;0900" class="no-wrap"
+                title=" Mon, 24 Nov 2025 00:00:00 &#43;0900">
+                Mon, 24 Nov 2025 00:00:00 &#43;0900
+              </relative-time>
+            </div>
+          </div>
+        </li>
+        
+        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
+          <div class="col-12 d-inline-block">
+            <div class="d-inline-block mb-1">
+              <h3 class="wb-break-all">
+                <a href="http://localhost:1313/post/paper/20251122130944-axbench_steering_llms_even_simple_baselines_outperform_sparse_autoencoders/">AxBench: Steering LLMs? Even Simple Baselines Outperform Sparse Autoencoders</a>
+              </h3>
+            </div>
+
+            <div>
+              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
+                <h2 id="論文情報">📄論文情報</h2>
+<ul>
+<li><a href="https://openreview.net/forum?id=K2CckZjNy0">AxBench: Steering LLMs? Even Simple Baselines Outperform Sparse Autoencoders</a></li>
+<li>ICML 2025</li>
+</ul>
+<h2 id="この論文のキーメッセージ">🔑この論文のキーメッセージ</h2>
+<ul>
+<li>（1, 2文でまとめる）</li>
+</ul>
+<h2 id="どういう問題に取り組んだのか">🎓どういう問題に取り組んだのか</h2>
+<ul>
+<li>LLMの内部表現に介入する手法の評価をするためのベンチマークデータセットを構築した</li>
+</ul>
+<h2 id="その問題に取り組むことがなぜ重要なのか">🧑‍🎓その問題に取り組むことがなぜ重要なのか</h2>
+<ul>
+<li>LLMの内部表現に介入する様々な手法が提案されている。</li>
+<li>だが、統一したベンチマークが存在しないため公平な評価ができていないという課題がある。</li>
+</ul>
+<h2 id="問題解決に向けたキーアイデアは何か">💡問題解決に向けたキーアイデアは何か</h2>
+<ul>
+<li>Concept DetectionとModel Steeringの二つの指標を評価するためのデータセットを構築した
+<ul>
+<li>Concept Detectionはシンプルな分類問題</li>
+<li>Model Steeringは、生成した文章をLLMが評価するものになる</li>
+</ul>
+</li>
+<li>データの用意のために、GPT-4oを使用したデータ拡張が行なわれている</li>
+<li>Concept Dataset Generation
+<ul>
+<li>データセットの形式はPreferenceデータセットと同じ形式になっている</li>
+<li>指示とポジティブなデータはLLMにより生成されている</li>
+<li>ネガティブなデータには、異なるコンセプトに属するレスポンスを使用している</li>
+<li>タスクの評価指標には、特定のレイヤーの各トークンの中間表現を用いて分類器が予測した確率の最大値を用いている
+<ul>
+<li>分類器の予測は[0-1]の一次元の出力になる</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Model Steering
+<ul>
+<li>評価指標
+<ul>
+<li>LLMが応答を0、1、2のいずれかで評価する</li>
+<li>スコアは、Concept、Instructoin、Fluencyの3つを使用する</li>
+<li>最終スコアは、調和平均を使用している</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>論文中で報告されているのは、特定のレイヤーにおけるスコアになっている
+<ul>
+<li>Model Steeringでは特定のレイヤーに介入した時のスコアになっている</li>
+</ul>
+</li>
+</ul>
+<h2 id="新たに分かったことは何か">👀新たに分かったことは何か</h2>
+<ul>
+<li>Concept DetectionではProbeベースの手法が、SAEを使用する手法よりも良い性能であった
+<ul>
+<li>評価指標は、AUROCを用いている</li>
+<li>特に、SAEはデータのバランスが悪いと性能が低下する傾向がある</li>
+</ul>
+</li>
+<li>Model Steeringにおいては、SAEの方が良い性能であるがLoRAやSFTよりも性能が低い結果であった</li>
+</ul>
+<h2 id="疑問点は何か">❓疑問点は何か</h2>
+<ul>
+<li>Model Steeringのスコアにおいて、定量的なものが採用されていないのが気になる
+<ul>
+<li>LLMによる評価だけで良いのかはとても疑問</li>
+</ul>
+</li>
+<li>Gemma以外のモデルの性能はどうなのだろう</li>
+</ul>
+              </div>
+            </div>
+
+            <div class="f6 text-gray mt-2">
+              
+              
+              <a class="muted-link mr-3" href="/tags/paper">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                paper
+              </a>
+              
+              
+
+              Created
+              <relative-time datetime=" Sat, 22 Nov 2025 00:00:00 &#43;0900" class="no-wrap"
+                title=" Sat, 22 Nov 2025 00:00:00 &#43;0900">
+                Sat, 22 Nov 2025 00:00:00 &#43;0900
+              </relative-time>
+            </div>
+          </div>
+        </li>
         
         <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
           <div class="col-12 d-inline-block">
@@ -1257,107 +1469,6 @@
               <relative-time datetime=" Wed, 08 Oct 2025 00:00:00 &#43;0900" class="no-wrap"
                 title=" Wed, 08 Oct 2025 00:00:00 &#43;0900">
                 Wed, 08 Oct 2025 00:00:00 &#43;0900
-              </relative-time>
-            </div>
-          </div>
-        </li>
-        
-        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
-          <div class="col-12 d-inline-block">
-            <div class="d-inline-block mb-1">
-              <h3 class="wb-break-all">
-                <a href="http://localhost:1313/post/tech/20251007164516-hugo%E3%81%AEgithub_style%E3%81%AB%E7%8B%AC%E8%87%AA%E3%81%AE%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%92%E4%BB%98%E3%81%91%E3%82%8B/">HugoのGithub Styleに自作のメニューを付ける</a>
-              </h3>
-            </div>
-
-            <div>
-              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
-                <p>このブログは<a href="https://gohugo.io">Hugo</a>の<a href="https://themes.gohugo.io/themes/github-style/">Github Style</a>を少し設定している。</p>
-<p>デフォルトだと、自己紹介などがブログに埋もれてしまうためメニューバーに追加した。</p>
-<p>現状、一つ加える度にhtmlを触らないといけない実装になっているのが気になるが、動いているからヨシ!</p>
-<p><code>config.toml</code> に以下の要素を追加して、設定ファイルに追記すれば要素が追加されるようにした。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="p">[[</span><span class="nx">params</span><span class="p">.</span><span class="nx">self</span><span class="p">]]</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">name</span> <span class="p">=</span> <span class="s1">&#39;Self&#39;</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">url</span><span class="p">=</span><span class="s2">&#34;introduction/introduction&#34;</span>
-</span></span></code></pre></div><p>そして、作成したHugoプロジェクト以下に <code>layouts/partial/menu.html</code> を作る。</p>
-<p><code>menus.html</code> の追加のメニューとして以下の変更を加えた。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">{{ range .Site.Params.projects }}
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;UnderlineNav-item
-</span></span></span><span class="line"><span class="cl"><span class="s">          {{ if .IsSection }}  selected  {{ end }}
-</span></span></span><span class="line"><span class="cl"><span class="s">          {{ if eq .Type &#34;</span> <span class="na">tags</span><span class="err">&#34;</span> <span class="err">}}</span> <span class="na">selected</span> <span class="err">{{</span> <span class="na">end</span> <span class="err">}}&#34;</span>
-</span></span><span class="line"><span class="cl">   <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ absURL .url }}&#34;</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">  {{ .name}}
-</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">{{ end }}
-</span></span></code></pre></div><p>既存の実装では、リンクを貼る実装が <code>{{urls.JoinPath .Site.BaseURL url}}</code> になってる。</p>
-<p>だが、上手く動作してくれなかったので <code>{{absURL .url}}</code> という実装にしている。</p>
-              </div>
-            </div>
-
-            <div class="f6 text-gray mt-2">
-              
-              
-              <a class="muted-link mr-3" href="/tags/tech">
-                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                  <path fill-rule="evenodd"
-                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                  </path>
-                </svg>
-                tech
-              </a>
-              
-              
-
-              Created
-              <relative-time datetime=" Tue, 07 Oct 2025 00:00:00 &#43;0900" class="no-wrap"
-                title=" Tue, 07 Oct 2025 00:00:00 &#43;0900">
-                Tue, 07 Oct 2025 00:00:00 &#43;0900
-              </relative-time>
-            </div>
-          </div>
-        </li>
-        
-        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
-          <div class="col-12 d-inline-block">
-            <div class="d-inline-block mb-1">
-              <h3 class="wb-break-all">
-                <a href="http://localhost:1313/post/movie/20251007082221-%E3%83%81%E3%82%A7%E3%83%BC%E3%83%B3%E3%82%BD%E3%83%BC%E3%83%9E%E3%83%B3_%E3%83%AC%E3%82%BC%E7%B7%A8/">チェーンソーマン レゼ編</a>
-              </h3>
-            </div>
-
-            <div>
-              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
-                <p>チェーンソーマン レゼ編を見た</p>
-<p>漫画では分からなかったシーンが補完されていて、面白かった。</p>
-<p>この映画では、爆弾の悪魔であるレゼと主人公であるデンジが出会い、戦うまでが描かれている。</p>
-<p>デンジがレゼと祭りに行く辺りから戦闘に移行するまでの音楽の変化が印象的で、戦闘シーンの派手さが強烈だった。</p>
-<p>デンジとレゼが祭りに言っている時は幸せそうな音楽なのに、戦闘が近づくにつれて不協和音が混ざっていく様子が、く、くる。。。という雰囲気がした。</p>
-<p>祭り以外にも、戦闘中の曲にマキシマム・ザ・ホルモンの刃渡り二億センチがとてもマッチしていたのを覚えている。</p>
-<p>戦闘シーンの派手さは強烈だった。</p>
-<p>爆弾の悪魔だけあって、爆発のエフェクトや音、鮫の魔人が頑張って移動する様子が映像化されていて、より漫画を読むのが楽しめるようになったのが良かった。</p>
-<p>鮫の魔人の移動の仕方が気持ち悪かったなあ。</p>
-<p>この先の話もきっと映像化されるだあろうし、楽しみだ。</p>
-              </div>
-            </div>
-
-            <div class="f6 text-gray mt-2">
-              
-              
-              <a class="muted-link mr-3" href="/tags/movie">
-                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                  <path fill-rule="evenodd"
-                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                  </path>
-                </svg>
-                movie
-              </a>
-              
-              
-
-              Created
-              <relative-time datetime=" Tue, 07 Oct 2025 00:00:00 &#43;0900" class="no-wrap"
-                title=" Tue, 07 Oct 2025 00:00:00 &#43;0900">
-                Tue, 07 Oct 2025 00:00:00 &#43;0900
               </relative-time>
             </div>
           </div>

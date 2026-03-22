@@ -3,28 +3,34 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/categories/book/</loc>
-    <lastmod>2026-02-12T21:35:52+09:00</lastmod>
+    <lastmod>2026-02-28T15:19:31+09:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/book/</loc>
-    <lastmod>2026-02-12T21:35:52+09:00</lastmod>
+    <lastmod>2026-02-28T15:19:31+09:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/</loc>
-    <lastmod>2026-02-12T21:35:52+09:00</lastmod>
+    <lastmod>2026-02-28T15:19:31+09:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2026-02-12T21:35:52+09:00</lastmod>
+    <lastmod>2026-02-28T15:19:31+09:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/post/</loc>
-    <lastmod>2026-02-12T21:35:52+09:00</lastmod>
+    <lastmod>2026-02-28T15:19:31+09:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2026-02-12T21:35:52+09:00</lastmod>
+    <lastmod>2026-02-28T15:19:31+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/book/20260224090920-%E5%A4%B1%E3%81%AA%E3%82%8F%E3%82%8C%E3%81%9F%E8%B2%8C/</loc>
+    <lastmod>2026-02-24T09:19:16+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/book/20260218191921-%E9%AD%9A%E3%81%8C%E5%AD%98%E5%9C%A8%E3%81%97%E3%81%AA%E3%81%84%E7%90%86%E7%94%B1/</loc>
+    <lastmod>2026-02-18T19:40:55+09:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/post/book/20260212210228-%E3%81%BE%E3%81%90%E3%81%95%E6%A1%B6%E3%81%AE%E7%8A%AC/</loc>
     <lastmod>2026-02-12T21:15:10+09:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/post/book/20260207211241-%E3%83%A8%E3%83%AB%E3%82%AC%E3%82%AA%E6%AE%BA%E4%BA%BA%E4%BA%8B%E4%BB%B6/</loc>
-    <lastmod>2026-02-12T21:35:52+09:00</lastmod>
+    <lastmod>2026-02-28T15:19:31+09:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/post/paper/20260205100956-from_outcomes_to_processes_guiding_prm_learning_from_orm_for_inference_time_alignment/</loc>
     <lastmod>2026-02-05T11:10:41+09:00</lastmod>
@@ -173,15 +179,22 @@
     <loc>http://localhost:1313/post/memo/20250930200606-%E3%82%88%E3%81%8F%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B%E7%94%BB%E5%83%8F%E3%82%B5%E3%82%A4%E3%83%88/</loc>
     <lastmod>2025-11-09T13:18:30+09:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/introduction/introduction/</loc>
+    <loc>http://localhost:1313/projects/</loc>
     <lastmod>2025-11-09T13:18:30+09:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/introduction/</loc>
+    <loc>http://localhost:1313/projects/projects/</loc>
     <lastmod>2025-11-09T13:18:30+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/test/</loc>
+    <lastmod>2025-11-09T13:18:30+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/introduction/introduction/</loc>
+    <lastmod>2026-02-23T14:28:53+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/introduction/</loc>
+    <lastmod>2026-02-23T14:28:53+09:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/readme/</loc>
     <lastmod>2025-11-09T13:18:30+09:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/projects/</loc>
   </url>
 </urlset>
