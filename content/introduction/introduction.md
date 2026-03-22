@@ -34,23 +34,23 @@ title = 'Introduction'
 
 1. [Generation of Instruction and Preference Dataset for Improving Japanese Instruction Following in LLMs]()
 
-<u> Kei Moriyama</u>, Takashi Kodama, Kouta Nakayama
+    <u> Kei Moriyama</u>, Takashi Kodama, Kouta Nakayama
 
-Proceedings of the Fifteenth biennial Language Resources and Evaluation Conference (LREC 2026)
+    Proceedings of the Fifteenth biennial Language Resources and Evaluation Conference (LREC 2026)
 
 ## 論文 (査読無し)
 
 - [LLMの日本語指示追従性向上のための人工データセットの構築](https://www.anlp.jp/proceedings/annual_meeting/2026/pdf_dir/Q4-14.pdf)
 
-<u>守山 慧</u>, 児玉 貴志, 中山 功太
+    <u>守山 慧</u>, 児玉 貴志, 中山 功太
 
-言語処理学会第32回年次大会 発表論文集(NLP2026)、pp1941-1946
+    言語処理学会第32回年次大会 発表論文集(NLP2026)、pp1941-1946
 
 - [AIエージェントのためのツール呼び出し評価データJMultiWOZ-TCの構築](https://www.anlp.jp/proceedings/annual_meeting/2026/pdf_dir/B2-9.pdf)
 
-清水 綾太, 中山 功太, <u>守山 慧</u>, 徳久 良子, 宮尾 祐介
-
-言語処理学会第32回年次大会 発表論文集(NLP2026)、p528-p533
+    清水 綾太, 中山 功太, <u>守山 慧</u>, 徳久 良子, 宮尾 祐介
+    
+    言語処理学会第32回年次大会 発表論文集(NLP2026)、p528-p533
 
 - [タスク特徴を考慮したマッチング制約下におけるアノテーション割り当て](https://yans.anlp.jp/entry/yans2024program)
 
