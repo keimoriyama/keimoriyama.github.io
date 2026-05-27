@@ -30,13 +30,21 @@ title = 'Introduction'
 
     指導教員：[村田 匡輝准教授](https://mnacsm.github.io/)
 
-## 論文 (査読付き)
+## 論文 (国際学会・査読付き)
 
-1. [Generation of Instruction and Preference Dataset for Improving Japanese Instruction Following in LLMs]()
+- [Generation of Instruction and Preference Dataset for Improving Japanese Instruction Following in LLMs](https://lrec.elra.info/lrec2026-main-111)
 
     <u> Kei Moriyama</u>, Takashi Kodama, Kouta Nakayama
 
     Proceedings of the Fifteenth biennial Language Resources and Evaluation Conference (LREC 2026)
+
+## 論文（査読付き・ワークショップ）
+
+- [Task Assignment meets Annotator Modeling: Human-LLM Collaborative Annotation with Constraints]()
+
+    <u> Kei Moriyama</u>, Kouta Nakayama, Yukino Baba
+
+    Proceedings of the 64th Annual Meeting of the Association for Computational Linguistics (Volume 4: Student Research Workshop)
 
 ## 論文 (査読無し)
 
