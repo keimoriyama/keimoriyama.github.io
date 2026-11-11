@@ -1,0 +1,96 @@
+{{ define "posts" }}
+<div>
+  <div class="position-relative">
+    <div>
+      {{ if eq .Type "tags" }}
+      <div class="TableObject border-bottom border-gray-light py-3">
+        <div class="user-repo-search-results-summary TableObject-item TableObject-item--primary v-align-top">
+          <strong>{{ len .Pages }}</strong>
+          results
+          for <strong>{{ .Title }}</strong>
+        </div>
+        <div class="TableObject-item text-right v-align-top">
+          <a class="issues-reset-query text-normal d-inline-block ml-3" href="{{ .Site.BaseURL }}/post/">
+            <svg class="octicon octicon-x issues-reset-query-icon mt-1" viewBox="0 0 16 16" version="1.1" width="16"
+              height="16">
+              <path fill-rule="evenodd"
+                d="M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z">
+              </path>
+            </svg>
+            Clear filter
+          </a>
+        </div>
+      </div>
+      {{else}}
+        {{if gt (len .Site.Taxonomies.tags) 0}}
+          {{partial "tags.html" .}}
+        {{end}}
+      {{ end }}
+      <style>
+        .post-card-summary {
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 3;
+          overflow: hidden;
+        }
+      </style>
+      <ol class="d-flex flex-wrap list-style-none gutter-condensed mt-3 mb-4">
+        {{ range .Paginator.Pages }}
+        <li class="col-12 col-md-6 col-lg-6 mb-3 d-flex flex-content-stretch">
+          <div class="Box d-flex flex-column p-3 width-full">
+            <div class="d-flex width-full flex-items-center position-relative">
+              <svg class="octicon octicon-repo mr-2 text-gray flex-shrink-0" viewBox="0 0 16 16" version="1.1"
+                width="16" height="16">
+                <path fill-rule="evenodd"
+                  d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z">
+                </path>
+              </svg>
+              <a class="text-bold flex-auto min-width-0 wb-break-all" href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a>
+            </div>
+
+            <p class="post-card-summary text-gray text-small mt-2 mb-3">
+              {{ .Summary | plainify | htmlUnescape }}
+            </p>
+
+            <p class="mb-0 mt-auto f6 text-gray">
+              {{ with .Params.tags }}
+              {{ range $tag := (first 5 .) }}
+              <a class="muted-link mr-3" href="{{ relURL (print "/tags/" ($tag | urlize)) }}">
+                <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                  <path fill-rule="evenodd"
+                    d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                  </path>
+                </svg>
+                {{ $tag }}
+              </a>
+              {{ end }}
+              {{ end }}
+
+              Created
+              <relative-time datetime="{{ .PublishDate.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}" class="no-wrap"
+                title="{{ .PublishDate.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}">
+                {{ .PublishDate.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}
+              </relative-time>
+            </p>
+          </div>
+        </li>
+        {{ end }}
+      </ol>
+      <div class="paginate-container">
+        <div class="BtnGroup">
+          {{ if .Paginator.HasPrev }}
+          <a rel="nofollow" class="btn btn-outline BtnGroup-item" href="{{ .Paginator.Prev.URL }}">Previous</a>
+          {{ else }}
+          <button class="btn btn-outline BtnGroup-item" disabled="disabled">Previous</button>
+          {{ end }}
+          {{ if .Paginator.HasNext }}
+          <a rel="nofollow" class="btn btn-outline BtnGroup-item" href="{{ .Paginator.Next.URL }}">Next</a>
+          {{ else }}
+          <button class="btn btn-outline BtnGroup-item" disabled="disabled">Next</button>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}
