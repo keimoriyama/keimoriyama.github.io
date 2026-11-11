@@ -32,14 +32,6 @@ pygmentsUseClasses = true
   enableGitalk = false
   enableSearch = true
   
-[[params.self]]
-  name = 'Self'
-  url="introduction/introduction"
-
-[[params.projects]]
-  name='Projects'
-  url="projects/projects"
-
 [caches]
   [caches.images]
     dir = ':cacheDir/images'
